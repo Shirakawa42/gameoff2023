@@ -9,15 +9,16 @@ public class CharacterController : MonoBehaviour
     public Transform wallCheckFront;
     public Transform wallCheckBack;
     public LayerMask groundLayer;
-    public float jumpingPower = 5f;
 
     private Rigidbody2D rb;
     private float horizontal;
     private float maxSpeed = 6f;
-    private float baseAcceleration = 0.2f;
+    private float baseAcceleration = 20f;
+    private float jumpingPower = 5f;
     private bool isFacingRight = true;
 
-    void Start() {
+    void Start()
+    {
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -26,9 +27,14 @@ public class CharacterController : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
-    private bool IsOnWall()
+    private bool IsFrontOnWall()
     {
-        return Physics2D.OverlapCircle(wallCheckFront.position, 0.2f, groundLayer) || Physics2D.OverlapCircle(wallCheckBack.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(wallCheckFront.position, 0.2f, groundLayer);
+    }
+
+    private bool IsBackOnWall()
+    {
+        return Physics2D.OverlapCircle(wallCheckBack.position, 0.2f, groundLayer);
     }
 
     private void Flip()
@@ -46,11 +52,19 @@ public class CharacterController : MonoBehaviour
     {
         if (context.performed && IsGrounded())
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-        else if (context.performed && IsOnWall()) {
+        else if (context.performed && IsFrontOnWall())
+        {
             if (isFacingRight)
                 rb.velocity = new Vector2(-jumpingPower, jumpingPower);
             else
                 rb.velocity = new Vector2(jumpingPower, jumpingPower);
+        }
+        else if (context.performed && IsBackOnWall())
+        {
+            if (isFacingRight)
+                rb.velocity = new Vector2(jumpingPower, jumpingPower);
+            else
+                rb.velocity = new Vector2(-jumpingPower, jumpingPower);
         }
 
         if (context.canceled && rb.velocity.y > 0)
@@ -59,11 +73,12 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
-        float acceleration = baseAcceleration;
+        float acceleration = baseAcceleration * Time.deltaTime;
         if (IsGrounded())
             acceleration *= 3f;
 
-        if ((rb.velocity.x < maxSpeed && horizontal < 0) || (rb.velocity.x > -maxSpeed && horizontal > 0)) {
+        if ((rb.velocity.x < maxSpeed && horizontal > 0) || (rb.velocity.x > -maxSpeed && horizontal < 0))
+        {
             float newSpeed = rb.velocity.x + (horizontal * acceleration);
             if (newSpeed > maxSpeed)
                 rb.velocity = new Vector2(maxSpeed, rb.velocity.y);
