@@ -6,6 +6,6 @@ public class GameManager : MonoBehaviour
 {
     void Awake()
     {
-        Globals.portalManager = GetComponent<PortalManager>();
+        
     }
 }
