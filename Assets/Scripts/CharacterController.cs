@@ -17,9 +17,16 @@ public class CharacterController : MonoBehaviour
     private float jumpingPower = 5f;
     private bool isFacingRight = true;
 
+
+    // smash part
+    private SmashDetection smashDetection;
+    public float smashIntensity;
+    private bool isSmashed = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        smashDetection = GetComponentInChildren<SmashDetection>();
     }
 
     private bool IsGrounded()
@@ -71,28 +78,58 @@ public class CharacterController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
     }
 
+    public void Fire(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            //Debug.Log("Fire!");
+            if (smashDetection.hitSomething)
+            {
+                Vector2 smashDir = new Vector2(smashDetection.target.transform.position.x - transform.position.x, smashDetection.target.transform.position.y - transform.position.y);
+                Rigidbody2D targetRb = smashDetection.target.GetComponent<Rigidbody2D>();
+                targetRb.AddForce(smashDir * smashIntensity, ForceMode2D.Impulse);
+                smashDetection.target.GetComponent<CharacterController>().isSmashed = true;
+            }
+            
+        }
+    }
+
     void Update()
     {
         float acceleration = baseAcceleration * Time.deltaTime;
+        Debug.Log(acceleration);
         if (IsGrounded())
             acceleration *= 3f;
 
-        if ((rb.velocity.x < maxSpeed && horizontal > 0) || (rb.velocity.x > -maxSpeed && horizontal < 0))
+        if (!isSmashed) // if the player isn't smashed then do regular movement
         {
-            float newSpeed = rb.velocity.x + (horizontal * acceleration);
-            if (newSpeed > maxSpeed)
-                rb.velocity = new Vector2(maxSpeed, rb.velocity.y);
-            else if (newSpeed < -maxSpeed)
-                rb.velocity = new Vector2(-maxSpeed, rb.velocity.y);
-            else
-                rb.velocity = new Vector2(rb.velocity.x + (horizontal * acceleration), rb.velocity.y);
+            if ((rb.velocity.x < maxSpeed && horizontal > 0) || (rb.velocity.x > -maxSpeed && horizontal < 0))
+            {
+                float newSpeed = rb.velocity.x + (horizontal * acceleration);
+                if (newSpeed > maxSpeed)
+                    rb.velocity = new Vector2(maxSpeed, rb.velocity.y);
+                else if (newSpeed < -maxSpeed)
+                    rb.velocity = new Vector2(-maxSpeed, rb.velocity.y);
+                else
+                    rb.velocity = new Vector2(rb.velocity.x + (horizontal * acceleration), rb.velocity.y);
+            }
+            else if (horizontal == 0)
+            {
+                rb.velocity = new Vector2(rb.velocity.x * (1f - acceleration), rb.velocity.y);
+                if (rb.velocity.x < 0.1f && rb.velocity.x > -0.1f)
+                    rb.velocity = new Vector2(0, rb.velocity.y);
+            }
         }
-        else if (horizontal == 0)
+        else
         {
-            rb.velocity = new Vector2(rb.velocity.x * (1f - acceleration), rb.velocity.y);
+            rb.velocity = new Vector2(rb.velocity.x * 0.9f, rb.velocity.y); // decrease velocity slower than regular movement
             if (rb.velocity.x < 0.1f && rb.velocity.x > -0.1f)
+            {
                 rb.velocity = new Vector2(0, rb.velocity.y);
+                isSmashed = false;
+            }
         }
+        
 
 
         if ((!isFacingRight && horizontal > 0) || (isFacingRight && horizontal < 0))
