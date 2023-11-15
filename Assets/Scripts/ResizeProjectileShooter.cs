@@ -12,23 +12,24 @@ public class ResizeProjectileShooter : MonoBehaviour
     private float cooldownTime = 0f;
     private bool onCooldown = false;
 
-    public void ShootSizeUp(Vector3 spawnPosition, Quaternion spawnRotation)
+    public void ShootSizeUp()
     {
         if (onCooldown) return;
 
-        SpawnProjectile(spawnPosition, spawnRotation, true);
+        SpawnProjectile(true);
     }
 
-    public void ShootSizeDown(Vector3 spawnPosition, Quaternion spawnRotation)
+    public void ShootSizeDown()
     {
         if (onCooldown) return;
 
-        SpawnProjectile(spawnPosition, spawnRotation, false);
+        SpawnProjectile(false);
     }
 
-    private void SpawnProjectile(Vector3 spawnPosition, Quaternion spawnRotation, bool sizeUp)
+    private void SpawnProjectile(bool sizeUp)
     {
-        ResizeProjectile projectile = Instantiate(projectilePrefab, spawnPosition, spawnRotation).GetComponent<ResizeProjectile>();
+        //TODO avoid immediate collision with the shooter (deactivate until the shooter left the projectile trigger on spawn ?)
+        ResizeProjectile projectile = Instantiate(projectilePrefab, transform.position, transform.rotation).GetComponent<ResizeProjectile>();
         projectile.SetScaleUpOnImpact(sizeUp);
         resetCooldown();
     }

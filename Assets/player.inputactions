@@ -49,6 +49,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "FireSizeDownProjectile",
+                    "type": "Button",
+                    "id": "b65b010f-e29f-47da-9489-ddc6e1afc9b1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "FireSizeUpProjectile",
+                    "type": "Button",
+                    "id": "f6a2e16c-b4aa-4d4a-959b-c78ba7ace46b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AimMode",
+                    "type": "Button",
+                    "id": "ad5ea1ee-de42-437a-ac78-841770385fd5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -57,7 +84,7 @@
                     "id": "978bfe49-cc26-4a3d-ab7b-7d7a29327403",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "StickDeadzone",
                     "groups": ";Gamepad",
                     "action": "Move",
                     "isComposite": false,
@@ -187,9 +214,9 @@
                 {
                     "name": "",
                     "id": "c1f7a91b-d0fd-4a62-997e-7fb9b69bf235",
-                    "path": "<Gamepad>/rightStick",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "StickDeadzone",
                     "groups": ";Gamepad",
                     "action": "Look",
                     "isComposite": false,
@@ -302,6 +329,61 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "25423633-0ef4-41f6-b077-2f9e75e1f5a5",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "FireSizeDownProjectile",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d5f2bf5e-0102-4a08-9e6b-8f8c817ee6f2",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "FireSizeDownProjectile",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2cff7fc1-d3c3-47bc-8300-430dfd4aedaa",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "FireSizeUpProjectile",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20e7188f-10da-4907-b8c9-eb1ecaa274c6",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "FireSizeUpProjectile",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9403ef84-c477-4700-9f45-d62a29364bf7",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "AimMode",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
