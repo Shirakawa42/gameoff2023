@@ -961,7 +961,8 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  smashIntensity: 2000
+  smashIntensity: 5000
+  speedToDie: 19
 --- !u!114 &521622051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1641,7 +1642,8 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  smashIntensity: 2000
+  smashIntensity: 5000
+  speedToDie: 20
 --- !u!70 &859251617
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

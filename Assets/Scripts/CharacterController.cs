@@ -23,6 +23,14 @@ public class CharacterController : MonoBehaviour
     public float smashIntensity;
     private bool isSmashed = false;
 
+    public float speedToDie;
+
+    /* 
+     * while (isSmashed)
+     *      if (rb.hitSomething)
+     *          if (objHitted is wall && rb.velocity > speedToDie)
+     *              die();
+     */
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -97,7 +105,7 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         float acceleration = baseAcceleration * Time.deltaTime;
-        Debug.Log(acceleration);
+       
         if (IsGrounded())
             acceleration *= 3f;
 
@@ -122,6 +130,7 @@ public class CharacterController : MonoBehaviour
         }
         else
         {
+            CheckSmashOnWall();
             rb.velocity = new Vector2(rb.velocity.x * 0.9f, rb.velocity.y); // decrease velocity slower than regular movement
             if (rb.velocity.x < 0.1f && rb.velocity.x > -0.1f)
             {
@@ -129,10 +138,19 @@ public class CharacterController : MonoBehaviour
                 isSmashed = false;
             }
         }
+
+        //Debug.Log(rb.velocity.sqrMagnitude);
         
-
-
         if ((!isFacingRight && horizontal > 0) || (isFacingRight && horizontal < 0))
             Flip();
+    }
+
+
+    private void CheckSmashOnWall()
+    {
+        if ((IsGrounded() || IsFrontOnWall() || IsBackOnWall()) && rb.velocity.sqrMagnitude > speedToDie)
+        {
+            Debug.Log("You die!");
+        }
     }
 }
