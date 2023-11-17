@@ -24,6 +24,9 @@ public class CharacterController : MonoBehaviour
     private bool isSmashed = false;
 
     public float speedToDie;
+    
+    public float smashCooldown; // en ms
+    private bool canSmash = true;
 
     /* 
      * while (isSmashed)
@@ -31,6 +34,7 @@ public class CharacterController : MonoBehaviour
      *          if (objHitted is wall && rb.velocity > speedToDie)
      *              die();
      */
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -90,13 +94,15 @@ public class CharacterController : MonoBehaviour
     {
         if(context.performed)
         {
-            //Debug.Log("Fire!");
-            if (smashDetection.hitSomething)
+            if (canSmash && smashDetection.hitSomething)
             {
                 Vector2 smashDir = new Vector2(smashDetection.target.transform.position.x - transform.position.x, smashDetection.target.transform.position.y - transform.position.y);
                 Rigidbody2D targetRb = smashDetection.target.GetComponent<Rigidbody2D>();
                 targetRb.AddForce(smashDir * smashIntensity, ForceMode2D.Impulse);
                 smashDetection.target.GetComponent<CharacterController>().isSmashed = true;
+
+                canSmash = false;
+                StartCoroutine(CooldownCoroutine());
             }
             
         }
@@ -145,12 +151,25 @@ public class CharacterController : MonoBehaviour
             Flip();
     }
 
-
+    /**
+     * 
+     **/
     private void CheckSmashOnWall()
     {
         if ((IsGrounded() || IsFrontOnWall() || IsBackOnWall()) && rb.velocity.sqrMagnitude > speedToDie)
         {
             Debug.Log("You die!");
         }
+    }
+
+
+    /**
+     * Smash Cooldown
+     **/
+    IEnumerator CooldownCoroutine()
+    {
+        yield return new WaitForSeconds(smashCooldown);
+
+        canSmash = true;
     }
 }
