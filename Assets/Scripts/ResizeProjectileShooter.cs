@@ -8,6 +8,8 @@ public class ResizeProjectileShooter : MonoBehaviour
     public float cooldown = 2f;
     // Projectile prefab
     public GameObject projectilePrefab;
+    public GameObject shooterParent; // Parent of this projectile, so it will be temporarly ignored by its own projectiles
+    public bool preventCollisionWithShooterOnSpawn = true;
 
     private float cooldownTime = 0f;
     private bool onCooldown = false;
@@ -28,10 +30,15 @@ public class ResizeProjectileShooter : MonoBehaviour
 
     private void SpawnProjectile(bool sizeUp)
     {
-        //TODO avoid immediate collision with the shooter (deactivate until the shooter left the projectile trigger on spawn ?)
         ResizeProjectile projectile = Instantiate(projectilePrefab, transform.position, transform.rotation).GetComponent<ResizeProjectile>();
         projectile.SetScaleUpOnImpact(sizeUp);
         resetCooldown();
+
+        // Prevent immediate collision with shooter -> assign this shooter to the projectile
+        if (preventCollisionWithShooterOnSpawn)
+        {
+            projectile.SetShooter(shooterParent);
+        }
     }
 
     private void resetCooldown()

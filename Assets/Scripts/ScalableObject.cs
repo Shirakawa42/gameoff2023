@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using System;
 
 [Serializable]
-public class OnScaleChangedEvent : UnityEvent<float> {}
+public class OnScaleChangedEvent : UnityEvent<GameObject, float> {}
 
 public class ScalableObject : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class ScalableObject : MonoBehaviour
     private float rbBaseMass;
     // The base scale value of this GameObject
     private Vector3 objBaseScale;
-    private float currentScale = 1.0f;
+    protected float currentScale = 1.0f;
     private Rigidbody2D rb;
 
     public float maxScale = 2f;
@@ -23,6 +23,10 @@ public class ScalableObject : MonoBehaviour
 
     [Tooltip("Event called when a new scale had been applied to this object")]
     public OnScaleChangedEvent onScaleChanged;
+    [Tooltip("Event called when this object had been scaled up")]
+    public OnScaleChangedEvent onScaleUp;
+    [Tooltip("Event called when this object had been scaled down")]
+    public OnScaleChangedEvent onScaleDown;
 
     // Start is called before the first frame update
     void Start()
@@ -39,23 +43,40 @@ public class ScalableObject : MonoBehaviour
 
     public void ScaleUp(float scaleRate)
     {
-        SetScale(currentScale * scaleRate);
+        if (SetScale(currentScale * scaleRate))
+        {
+            onScaleUp.Invoke(gameObject, currentScale);
+        }
     }
 
     public void ScaleDown(float scaleRate)
     {
-        SetScale(currentScale / scaleRate);
+        if (SetScale(currentScale / scaleRate))
+        {
+            onScaleDown.Invoke(gameObject, currentScale);
+        }
     }
 
-    public void SetScale(float newScale)
+    // Return true if scale had been changed
+    public virtual bool SetScale(float newScale)
     {
+        // Check if new scale is in min/max range
+        if (newScale < minScale || newScale > maxScale) return false;
+
         float scaleToApply = Mathf.Clamp(newScale, minScale, maxScale);
-        if (scaleToApply == currentScale) return;
+        if (scaleToApply == currentScale) return false;
 
         currentScale = scaleToApply;
         rb.mass = rbBaseMass * currentScale;
         transform.localScale = objBaseScale * currentScale;
-        onScaleChanged.Invoke(currentScale);
+        onScaleChanged.Invoke(gameObject, currentScale);
+
+        return true;
+    }
+
+    public void ResetScale()
+    {
+        SetScale(startingScale);
     }
 
     public float getCurrentScale()

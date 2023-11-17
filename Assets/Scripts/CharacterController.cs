@@ -100,12 +100,14 @@ public class CharacterController : MonoBehaviour
     public void Look(InputAction.CallbackContext context)
     {
         // TODO mouse pointer aim
-        aimDir = context.ReadValue<Vector2>();
-        if (!isFacingRight) // Compensate for negative scale when looking left
+        // Aim left/right idle rotation
+        if (context.canceled)
         {
-            aimDir *= -1;
-            //projShooterPivot.transform.localScale = Vector3.Scale(projShooterPivot.transform.localScale, new Vector3(-1, 1, 1)); //Not working well...
+            projShooterPivot.rotation = Quaternion.Euler(0f, 0f, isFacingRight ? 0f : 180f);
+            return;
         }
+
+        aimDir = context.ReadValue<Vector2>();
         float aimAngle = Vector2.SignedAngle(Vector2.right, aimDir);
         // Not in aim mode -> snap to 45 degrees
         if (!inAimMode)

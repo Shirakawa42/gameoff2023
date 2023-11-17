@@ -91,7 +91,7 @@ public class InteractibleItem : MonoBehaviour
     {
     }
 
-    private void OnScaleChanged(float newScale)
+    private void OnScaleChanged(GameObject that, float newScale)
     {
     }
 

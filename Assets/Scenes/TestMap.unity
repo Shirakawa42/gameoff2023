@@ -154,6 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 2
   projectilePrefab: {fileID: 7715267938991295724, guid: e924e40f8e8530b41869f9daa71db3f5, type: 3}
+  shooterParent: {fileID: 1864852536}
+  preventCollisionWithShooterOnSpawn: 1
 --- !u!4 &10554092
 Transform:
   m_ObjectHideFlags: 0
@@ -1197,6 +1199,7 @@ GameObject:
   - component: {fileID: 1864852539}
   - component: {fileID: 1864852538}
   - component: {fileID: 1864852537}
+  - component: {fileID: 1864852543}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -1385,6 +1388,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ad5ea1ee-de42-437a-ac78-841770385fd5
     m_ActionName: Player/AimMode[/XInputControllerWindows/leftShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 07f59ba5-0a89-4672-9573-46a36726828c
+    m_ActionName: Player1/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e5a009ad-8295-49c0-a716-acf9a4aeeb96
+    m_ActionName: Player1/Look[/XInputControllerWindows/rightStick,/Mouse/delta,/Pen/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6a0f6268-253b-44fc-be40-bcef1c0d5f75
+    m_ActionName: Player1/Fire[/XInputControllerWindows/rightTrigger,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 50b6ad45-f931-438e-81b7-9f842bcec390
+    m_ActionName: Player1/Jump[/XInputControllerWindows/buttonSouth,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0d8c1a7b-855e-442a-9078-df9f24e19c14
+    m_ActionName: Player2/Move[/XInputControllerWindows/leftStick,/Keyboard/i,/Keyboard/upArrow,/Keyboard/k,/Keyboard/downArrow,/Keyboard/j,/Keyboard/leftArrow,/Keyboard/l,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 06be8418-3c38-4d7b-976a-2b115475dbec
+    m_ActionName: Player2/Look[/XInputControllerWindows/rightStick,/Mouse/delta,/Pen/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f272fc53-b13e-428a-a0f1-dddd01721635
+    m_ActionName: Player2/Fire[/XInputControllerWindows/rightTrigger,/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4db4fc92-a5d8-4f25-aaf9-cc200b7855ff
+    m_ActionName: Player2/Jump[/XInputControllerWindows/buttonSouth,/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1410,6 +1445,9 @@ MonoBehaviour:
     m_Bits: 256
   projShooter: {fileID: 10554091}
   projShooterPivot: {fileID: 951980729}
+  smashIntensity: 0
+  speedToDie: 0
+  smashCooldown: 0
 --- !u!70 &1864852539
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1546,6 +1584,30 @@ Transform:
   - {fileID: 951980729}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1864852543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864852536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1a19c5822c71a049ade6735ca88d307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxScale: 4
+  minScale: 0.25
+  startingScale: 1
+  onScaleChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onScaleUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onScaleDown:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2088668706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1681,6 +1743,38 @@ PrefabInstance:
     - target: {fileID: 8328973083114608338, guid: 0dcd2921878c86942926607211457924, type: 3}
       propertyPath: m_Name
       value: Crate
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889093009297533976, guid: 0dcd2921878c86942926607211457924, type: 3}
+      propertyPath: onScaleChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889093009297533976, guid: 0dcd2921878c86942926607211457924, type: 3}
+      propertyPath: onScaleChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889093009297533976, guid: 0dcd2921878c86942926607211457924, type: 3}
+      propertyPath: onScaleChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889093009297533976, guid: 0dcd2921878c86942926607211457924, type: 3}
+      propertyPath: onScaleChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889093009297533976, guid: 0dcd2921878c86942926607211457924, type: 3}
+      propertyPath: onScaleChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TestingFunc
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889093009297533976, guid: 0dcd2921878c86942926607211457924, type: 3}
+      propertyPath: onScaleChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Testing, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889093009297533976, guid: 0dcd2921878c86942926607211457924, type: 3}
+      propertyPath: onScaleChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889093009297533976, guid: 0dcd2921878c86942926607211457924, type: 3}
+      propertyPath: onScaleChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
