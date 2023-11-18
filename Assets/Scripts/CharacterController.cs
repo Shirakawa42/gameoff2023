@@ -44,6 +44,7 @@ public class CharacterController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         smashDetection = GetComponentInChildren<SmashDetection>();
+        DontDestroyOnLoad(gameObject);
     }
 
     private bool IsGrounded()
