@@ -48,23 +48,23 @@ public class CharacterController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
     }
 
     private bool IsFrontOnWall()
     {
-        return Physics2D.OverlapCircle(wallCheckFront.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(wallCheckFront.position, 0.1f, groundLayer);
     }
 
     private bool IsBackOnWall()
     {
-        return Physics2D.OverlapCircle(wallCheckBack.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(wallCheckBack.position, 0.1f, groundLayer);
     }
 
     private void Flip()
     {
         isFacingRight = !isFacingRight;
-        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        transform.localRotation = Quaternion.Euler(0, isFacingRight ? 0 : 180, 0);
     }
 
     public void Move(InputAction.CallbackContext context)
