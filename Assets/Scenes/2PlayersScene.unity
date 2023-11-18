@@ -135,8 +135,8 @@ GameObject:
   - component: {fileID: 35222689}
   - component: {fileID: 35222688}
   m_Layer: 6
-  m_Name: Square (3)
-  m_TagString: Untagged
+  m_Name: Wall (3)
+  m_TagString: Lethal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -333,8 +333,8 @@ GameObject:
   - component: {fileID: 209445106}
   - component: {fileID: 209445105}
   m_Layer: 6
-  m_Name: Square (2)
-  m_TagString: Untagged
+  m_Name: Wall (2)
+  m_TagString: Lethal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -511,8 +511,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 751540122}
   - {fileID: 950694210}
+  - {fileID: 751540122}
   - {fileID: 209445107}
   - {fileID: 35222690}
   - {fileID: 311479484}
@@ -530,8 +530,8 @@ GameObject:
   - component: {fileID: 311479483}
   - component: {fileID: 311479482}
   m_Layer: 6
-  m_Name: Square (4)
-  m_TagString: Untagged
+  m_Name: Wall (4)
+  m_TagString: Lethal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1031,8 +1031,10 @@ MonoBehaviour:
     m_Bits: 64
   projShooter: {fileID: 0}
   projShooterPivot: {fileID: 0}
-  smashInitForce: 1000
-  speedToDie: 19
+  idPlayer: 1
+  sizeScale: 0
+  maxGap: 4
+  smashInitForce: 0
   smashCooldown: 0.75
 --- !u!114 &521622051
 MonoBehaviour:
@@ -1310,7 +1312,7 @@ GameObject:
   - component: {fileID: 751540121}
   - component: {fileID: 751540120}
   m_Layer: 6
-  m_Name: Square
+  m_Name: Ground (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1755,8 +1757,10 @@ MonoBehaviour:
     m_Bits: 64
   projShooter: {fileID: 0}
   projShooterPivot: {fileID: 0}
-  smashInitForce: 1000
-  speedToDie: 20
+  idPlayer: 2
+  sizeScale: 0
+  maxGap: 5
+  smashInitForce: 0
   smashCooldown: 0.75
 --- !u!70 &859251617
 CapsuleCollider2D:
@@ -1905,7 +1909,7 @@ GameObject:
   - component: {fileID: 950694209}
   - component: {fileID: 950694208}
   m_Layer: 6
-  m_Name: Square (1)
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2283,7 +2287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3827a6eb1fc641440993c126b84bde24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smashCounter: 0
+  nbPlayers: 0
 --- !u!1 &1738117851
 GameObject:
   m_ObjectHideFlags: 0

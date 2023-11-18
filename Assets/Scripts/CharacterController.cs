@@ -24,6 +24,9 @@ public class CharacterController : MonoBehaviour
     private bool inAimMode = false;
 
 
+    // mutliplayer data
+    public int idPlayer;
+
     // size scale aspect
     [Range(0, 4)] public int sizeScale;
     [SerializeField] private int maxGap = 4; // peut être placer dans le GameManager ?
@@ -33,10 +36,9 @@ public class CharacterController : MonoBehaviour
     public float smashInitForce;
     private float smashIntensity;
     private bool isSmashed = false;
-
-    public float speedToDie;
+    private int idSmasher;
     
-    public float smashCooldown; // en ms
+    public float smashCooldown; // in seconds
     private bool canSmash = true;
 
     /* 
@@ -48,8 +50,10 @@ public class CharacterController : MonoBehaviour
 
     void Start()
     {
-        sizeScale = 2;
         smashInitForce = 1000;
+
+        idPlayer = int.Parse(transform.name.Substring(6)) - 1;
+        Debug.Log(idPlayer);
 
         rb = GetComponent<Rigidbody2D>();
         smashDetection = GetComponentInChildren<SmashDetection>();
@@ -117,15 +121,22 @@ public class CharacterController : MonoBehaviour
                 float sizeGap = sizeScale - target.GetComponent<CharacterController>().sizeScale;
                 smashIntensity = smashInitForce * (1.2f * Mathf.Exp(0.7f * sizeGap));
 
-                Debug.Log("sizeGap : " + sizeGap + "\n" +
-                            "Initial Force : " + smashInitForce + "\n" +
-                            " = Intensity : " +  smashIntensity);
+                //Debug.Log("sizeGap : " + sizeGap + "\n" +
+                //            "Initial Force : " + smashInitForce + "\n" +
+                //            " = Intensity : " +  smashIntensity);
+
+                if (sizeGap >= maxGap)
+                {
+                    Debug.Log("Ultra Smash ! Launch Automatic Win Procedure");
+                    smashDetection.target.GetComponent<CharacterController>().Die();
+                }
 
                 Vector2 smashDir = new Vector2(target.transform.position.x - transform.position.x, target.transform.position.y - transform.position.y);
 
                 target.GetComponent<Rigidbody2D>().AddForce(smashDir * smashIntensity, ForceMode2D.Impulse);
 
                 smashDetection.target.GetComponent<CharacterController>().isSmashed = true;
+                smashDetection.target.GetComponent<CharacterController>().idSmasher = idPlayer;
 
                 canSmash = false;
                 StartCoroutine(CooldownCoroutine());
@@ -206,12 +217,12 @@ public class CharacterController : MonoBehaviour
         }
         else
         {
-            CheckSmashOnWall();
             rb.velocity = new Vector2(rb.velocity.x * 0.9f, rb.velocity.y); // decrease velocity slower than regular movement
             if (rb.velocity.x < 0.1f && rb.velocity.x > -0.1f)
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
                 isSmashed = false;
+                idSmasher = idPlayer;
             }
         }
 
@@ -224,13 +235,24 @@ public class CharacterController : MonoBehaviour
     /**
      * 
      **/
-    private void CheckSmashOnWall()
+    public void Die()
     {
-        if ((IsGrounded() || IsFrontOnWall() || IsBackOnWall()) && rb.velocity.sqrMagnitude > speedToDie)
+        
+        Debug.Log("You die!");
+        if (idSmasher != idPlayer)
+            GameManager.Instance.IncPlayerScore(idSmasher);
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Lethal")
         {
-            //Debug.Log("You die!");
+            Die();
         }
     }
+
+
 
 
     /**
