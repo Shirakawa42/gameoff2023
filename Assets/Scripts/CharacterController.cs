@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,9 +24,14 @@ public class CharacterController : MonoBehaviour
     private bool inAimMode = false;
 
 
+    // size scale aspect
+    [Range(0, 4)] public int sizeScale;
+    [SerializeField] private int maxGap = 4; // peut être placer dans le GameManager ?
+
     // smash part
     private SmashDetection smashDetection;
-    public float smashIntensity;
+    public float smashInitForce;
+    private float smashIntensity;
     private bool isSmashed = false;
 
     public float speedToDie;
@@ -42,6 +48,9 @@ public class CharacterController : MonoBehaviour
 
     void Start()
     {
+        sizeScale = 2;
+        smashInitForce = 1000;
+
         rb = GetComponent<Rigidbody2D>();
         smashDetection = GetComponentInChildren<SmashDetection>();
         DontDestroyOnLoad(gameObject);
@@ -97,6 +106,34 @@ public class CharacterController : MonoBehaviour
         if (context.canceled && rb.velocity.y > 0)
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
     }
+
+    public void Smash(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (canSmash && smashDetection.hitSomething)
+            {
+                GameObject target = smashDetection.target;
+                float sizeGap = sizeScale - target.GetComponent<CharacterController>().sizeScale;
+                smashIntensity = smashInitForce * (1.2f * Mathf.Exp(0.7f * sizeGap));
+
+                Debug.Log("sizeGap : " + sizeGap + "\n" +
+                            "Initial Force : " + smashInitForce + "\n" +
+                            " = Intensity : " +  smashIntensity);
+
+                Vector2 smashDir = new Vector2(target.transform.position.x - transform.position.x, target.transform.position.y - transform.position.y);
+
+                target.GetComponent<Rigidbody2D>().AddForce(smashDir * smashIntensity, ForceMode2D.Impulse);
+
+                smashDetection.target.GetComponent<CharacterController>().isSmashed = true;
+
+                canSmash = false;
+                StartCoroutine(CooldownCoroutine());
+            }
+
+        }
+    }
+
 
     public void Look(InputAction.CallbackContext context)
     {
@@ -191,7 +228,7 @@ public class CharacterController : MonoBehaviour
     {
         if ((IsGrounded() || IsFrontOnWall() || IsBackOnWall()) && rb.velocity.sqrMagnitude > speedToDie)
         {
-            Debug.Log("You die!");
+            //Debug.Log("You die!");
         }
     }
 
