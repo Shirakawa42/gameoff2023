@@ -16,6 +16,7 @@ public class ResizeProjectile : MonoBehaviour
     private Rigidbody2D rb;
     private float currentLifetime = lifetime;
     private GameObject shooter = null; // The shooter of this projectile, to ignore collision when this projectile just spawned (Optional)
+    private bool destroyed = false; // Flag if this projectile already touched a scalable object and will be destroyed
     
     // Start is called before the first frame update
     void Awake()
@@ -45,6 +46,8 @@ public class ResizeProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (destroyed) return; // Projectile had already been used, ignore this collision
+
         // Avoid immediate collision with the shooter of this projectile
         if (shooter && collision.gameObject == shooter) return;
 
@@ -61,13 +64,14 @@ public class ResizeProjectile : MonoBehaviour
                 obj.ScaleDown(scaleRateModifier);
             }
             Destroy(gameObject);
+            destroyed = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         // Remove temporary collision ignore with the shooter of this projectile
-        if (shooter) shooter = null;
+        if (shooter && collision.gameObject == shooter) shooter = null;
     }
 
     void FixedUpdate()
@@ -76,6 +80,7 @@ public class ResizeProjectile : MonoBehaviour
         if (currentLifetime <= 0)
         {
             Destroy(gameObject);
+            destroyed = true;
             return;
         }
 

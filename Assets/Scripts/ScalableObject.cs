@@ -10,11 +10,11 @@ public class OnScaleChangedEvent : UnityEvent<GameObject, float> {}
 public class ScalableObject : MonoBehaviour
 {
     // The base Rigidbody mass value of this GameObject
-    private float rbBaseMass;
+    private float rbBaseMass = 0f;
     // The base scale value of this GameObject
     private Vector3 objBaseScale;
     protected float currentScale = 1.0f;
-    private Rigidbody2D rb;
+    private Rigidbody2D rb; // Optional
 
     public float maxScale = 2f;
     public float minScale = 0.5f;
@@ -33,7 +33,7 @@ public class ScalableObject : MonoBehaviour
     {
         objBaseScale = transform.localScale;
         rb = GetComponent<Rigidbody2D>();
-        rbBaseMass = rb.mass;
+        if (rb) rbBaseMass = rb.mass;
 
         if (startingScale > 0 && startingScale != 1)
         {
@@ -67,7 +67,7 @@ public class ScalableObject : MonoBehaviour
         if (scaleToApply == currentScale) return false;
 
         currentScale = scaleToApply;
-        rb.mass = rbBaseMass * currentScale;
+        if (rb) rb.mass = rbBaseMass * currentScale;
         transform.localScale = objBaseScale * currentScale;
         onScaleChanged.Invoke(gameObject, currentScale);
 
