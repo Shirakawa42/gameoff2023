@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Grabber : MonoBehaviour
 {
-    static private Vector2 ThrowDir = new Vector2(1f, .5f).normalized;
+    //static private Vector2 ThrowDir = new Vector2(1f, .5f).normalized;
 
     private InteractibleItem grabbedItem;
 
@@ -13,6 +13,7 @@ public class Grabber : MonoBehaviour
     public Vector2 throwOffset = new Vector2(0, 0);
     [Tooltip("Player object using this grabber")]
     public GameObject playerObj;
+    public CharacterController playerController;
     // TODO ? cooldown to avoid grab action spam
 
     // Grab a nearby item if possible
@@ -33,6 +34,11 @@ public class Grabber : MonoBehaviour
         }
 
         grabbedItem.Grab(this, transform);// TODO ? custom grabAnchor transform
+    }
+
+    public bool IsGrabbingObj()
+    {
+        return grabbedItem != null;
     }
 
     private InteractibleItem getNearestGrabbableItem()
@@ -61,8 +67,8 @@ public class Grabber : MonoBehaviour
 
     private void ThrowItem()
     {
-        Vector2 throwDirection = new Vector2(ThrowDir.x * Mathf.Sign(playerObj.transform.localScale.x), ThrowDir.y); //TODO use isFacingRight
-        grabbedItem.Throw(throwDirection, 5, throwOffset);
+        //Vector2 throwDirection = new Vector2(ThrowDir.x * Mathf.Sign(playerObj.transform.localScale.x), ThrowDir.y); //TODO use isFacingRight
+        grabbedItem.Throw(playerController.aimDir, 5, throwOffset);
         grabbedItem = null;
     }
 

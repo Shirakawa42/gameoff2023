@@ -10,8 +10,11 @@ public class CharacterController : MonoBehaviour
     public Transform wallCheckBack;
     public LayerMask groundLayer;
 
+    // Projectile shooter
     public ResizeProjectileShooter projShooter;
     public Transform projShooterPivot;
+    // Grabber
+    public Grabber grabber;
 
     private Rigidbody2D rb;
     private float horizontal;
@@ -19,7 +22,7 @@ public class CharacterController : MonoBehaviour
     private float baseAcceleration = 20f;
     private float jumpingPower = 5f;
     private bool isFacingRight = true;
-    private Vector2 aimDir;
+    public Vector2 aimDir { get; private set; }
     private bool inAimMode = false;
 
 
@@ -132,12 +135,16 @@ public class CharacterController : MonoBehaviour
     public void ShootProjSizeUp(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
+        if (grabber.IsGrabbingObj()) return;
+
         projShooter.ShootSizeUp();
     }
 
     public void ShootProjSizeDown(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
+        if (grabber.IsGrabbingObj()) return;
+
         projShooter.ShootSizeDown();
     }
 
