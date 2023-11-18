@@ -22,9 +22,28 @@ public class CharacterController : MonoBehaviour
     private Vector2 aimDir;
     private bool inAimMode = false;
 
+
+    // smash part
+    private SmashDetection smashDetection;
+    public float smashIntensity;
+    private bool isSmashed = false;
+
+    public float speedToDie;
+    
+    public float smashCooldown; // en ms
+    private bool canSmash = true;
+
+    /* 
+     * while (isSmashed)
+     *      if (rb.hitSomething)
+     *          if (objHitted is wall && rb.velocity > speedToDie)
+     *              die();
+     */
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        smashDetection = GetComponentInChildren<SmashDetection>();
     }
 
     private bool IsGrounded()
@@ -122,28 +141,65 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         float acceleration = baseAcceleration * Time.deltaTime;
+       
         if (IsGrounded())
             acceleration *= 3f;
 
-        if ((rb.velocity.x < maxSpeed && horizontal > 0) || (rb.velocity.x > -maxSpeed && horizontal < 0))
+        if (!isSmashed) // if the player isn't smashed then do regular movement
         {
-            float newSpeed = rb.velocity.x + (horizontal * acceleration);
-            if (newSpeed > maxSpeed)
-                rb.velocity = new Vector2(maxSpeed, rb.velocity.y);
-            else if (newSpeed < -maxSpeed)
-                rb.velocity = new Vector2(-maxSpeed, rb.velocity.y);
-            else
-                rb.velocity = new Vector2(rb.velocity.x + (horizontal * acceleration), rb.velocity.y);
+            if ((rb.velocity.x < maxSpeed && horizontal > 0) || (rb.velocity.x > -maxSpeed && horizontal < 0))
+            {
+                float newSpeed = rb.velocity.x + (horizontal * acceleration);
+                if (newSpeed > maxSpeed)
+                    rb.velocity = new Vector2(maxSpeed, rb.velocity.y);
+                else if (newSpeed < -maxSpeed)
+                    rb.velocity = new Vector2(-maxSpeed, rb.velocity.y);
+                else
+                    rb.velocity = new Vector2(rb.velocity.x + (horizontal * acceleration), rb.velocity.y);
+            }
+            else if (horizontal == 0)
+            {
+                rb.velocity = new Vector2(rb.velocity.x * (1f - acceleration), rb.velocity.y);
+                if (rb.velocity.x < 0.1f && rb.velocity.x > -0.1f)
+                    rb.velocity = new Vector2(0, rb.velocity.y);
+            }
         }
-        else if (horizontal == 0)
+        else
         {
-            rb.velocity = new Vector2(rb.velocity.x * (1f - acceleration), rb.velocity.y);
+            CheckSmashOnWall();
+            rb.velocity = new Vector2(rb.velocity.x * 0.9f, rb.velocity.y); // decrease velocity slower than regular movement
             if (rb.velocity.x < 0.1f && rb.velocity.x > -0.1f)
+            {
                 rb.velocity = new Vector2(0, rb.velocity.y);
+                isSmashed = false;
+            }
         }
 
-
+        //Debug.Log(rb.velocity.sqrMagnitude);
+        
         if ((!isFacingRight && horizontal > 0) || (isFacingRight && horizontal < 0))
             Flip();
+    }
+
+    /**
+     * 
+     **/
+    private void CheckSmashOnWall()
+    {
+        if ((IsGrounded() || IsFrontOnWall() || IsBackOnWall()) && rb.velocity.sqrMagnitude > speedToDie)
+        {
+            Debug.Log("You die!");
+        }
+    }
+
+
+    /**
+     * Smash Cooldown
+     **/
+    IEnumerator CooldownCoroutine()
+    {
+        yield return new WaitForSeconds(smashCooldown);
+
+        canSmash = true;
     }
 }
