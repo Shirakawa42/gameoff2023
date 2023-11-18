@@ -45,9 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabRange: 0.45
-  throwOffset: {x: 0.5, y: 0}
-  playerObj: {fileID: 714367810389178160}
-  playerController: {fileID: 6915644559399616519}
+  throwOffset: {x: 0.75, y: 0}
+  player: {fileID: 2063365452111491199}
 --- !u!1 &714367810389178160
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +155,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 60
+  m_Mass: 0.25
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 1
@@ -365,10 +364,10 @@ MonoBehaviour:
     m_ActionName: Player/Grab[/Mouse/rightButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3854191945069039725}
-        m_TargetAssemblyTypeName: ResizeProjectileShooter, Assembly-CSharp
-        m_MethodName: ShootSizeDown
-        m_Mode: 1
+      - m_Target: {fileID: 6915644559399616519}
+        m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
+        m_MethodName: ShootProjSizeDown
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -381,10 +380,10 @@ MonoBehaviour:
     m_ActionName: Player/FireSizeDownProjectile[/Keyboard/e]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3854191945069039725}
-        m_TargetAssemblyTypeName: ResizeProjectileShooter, Assembly-CSharp
-        m_MethodName: ShootSizeUp
-        m_Mode: 1
+      - m_Target: {fileID: 6915644559399616519}
+        m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
+        m_MethodName: ShootProjSizeUp
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

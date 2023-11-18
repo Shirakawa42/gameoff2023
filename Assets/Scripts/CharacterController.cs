@@ -22,10 +22,10 @@ public class CharacterController : MonoBehaviour
     private float baseAcceleration = 20f;
     private float jumpingPower = 5f;
     private bool isFacingRight = true;
+    public Vector2 aimDir { get; private set; }
     private bool inAimMode = false;
     private PlayerInput playerInput;
     private bool isMouse = false;
-    public Vector2 aimDir;
 
 
     // smash part
@@ -127,6 +127,7 @@ public class CharacterController : MonoBehaviour
         if (context.canceled && !inAimMode && !isMouse)
         {
             projShooterPivot.rotation = Quaternion.Euler(0f, 0f, isFacingRight ? 0f : 180f);
+            aimDir = isFacingRight ? Vector2.right : Vector2.left;
             return;
         }
 

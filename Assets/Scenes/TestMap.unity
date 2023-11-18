@@ -674,10 +674,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 330701800055601125, guid: aea15fc857ba47d4297e175dc71f040a, type: 3}
-      propertyPath: m_NeverAutoSwitchControlSchemes
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 714367810389178160, guid: aea15fc857ba47d4297e175dc71f040a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -724,7 +720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5491685965666629734, guid: aea15fc857ba47d4297e175dc71f040a, type: 3}
       propertyPath: m_Constraints
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

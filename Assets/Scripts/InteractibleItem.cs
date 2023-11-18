@@ -17,7 +17,12 @@ public class InteractibleItem : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
         scObj = GetComponent<ScalableObject>();
-        scObj.onScaleChanged.AddListener(OnScaleChanged);
+        scObj.OnScaleChanged.AddListener(OnScaleChanged);
+    }
+
+    public float GetMass()
+    {
+        return rb.mass;
     }
 
     public void Grab(Grabber grabber, Transform grabAnchor)
@@ -27,24 +32,38 @@ public class InteractibleItem : MonoBehaviour
         rb.isKinematic = true;
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0f;
-        foreach (Collider2D grabberColl in grabber.playerObj.GetComponents<Collider2D>())
+        foreach (Collider2D grabberColl in grabber.player.GetComponents<Collider2D>())
         {
             Physics2D.IgnoreCollision(coll, grabberColl);
         }
         this.grabber = grabber;
-        transform.SetParent(grabAnchor);
+        //transform.SetParent(grabAnchor);
         transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
 
         OnGrab(grabber);
     }
 
-    public void Throw(Vector2 direction, float power, Vector2 offsetPos)
+    public void Release(Vector3 startingPosition)
     {
-        // Unparent object with grabber and throw it
-        transform.localPosition = offsetPos; // offset item from grab point
+        // Unparent object with grabber
+        transform.position = startingPosition; // offset item from grab point
         transform.SetParent(null);
         rb.isKinematic = false;
-        foreach (Collider2D grabberColl in grabber.playerObj.GetComponents<Collider2D>()) // TODO ? handle better collision reactivation with player
+        foreach (Collider2D grabberColl in grabber.player.GetComponents<Collider2D>()) // TODO ? handle better collision reactivation with player
+        {
+            Physics2D.IgnoreCollision(coll, grabberColl, false);
+        }
+        OnRelease(grabber);
+        grabber = null;
+    }
+
+    public void Throw(Vector2 direction, float power, Vector3 startingPosition)
+    {
+        // Unparent object with grabber and throw it
+        transform.position = startingPosition; // Replace item before throw
+        //transform.SetParent(null);
+        rb.isKinematic = false;
+        foreach (Collider2D grabberColl in grabber.player.GetComponents<Collider2D>()) // TODO ? handle better collision reactivation with player
         {
             Physics2D.IgnoreCollision(coll, grabberColl, false);
         }
@@ -87,12 +106,21 @@ public class InteractibleItem : MonoBehaviour
     {
     }
 
+    private void OnRelease(Grabber grabber)
+    {
+    }
+
     private void OnThrow(Grabber thrower)
     {
     }
 
     private void OnScaleChanged(GameObject that, float newScale)
     {
+        // If grabbed item scale changed and is too heavy for player -> release it
+        if (grabber && !grabber.CanGrab(this))
+        {
+            grabber.ReleaseItem();
+        }
     }
 
     private void OnCollisionWithPlayer(CharacterController player, Collision2D collision) //TODO add a "Player" component to players instead of using the controller ?

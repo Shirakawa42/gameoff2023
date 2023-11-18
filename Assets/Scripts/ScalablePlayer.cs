@@ -6,20 +6,19 @@ public class ScalablePlayer : ScalableObject
 {
     // When player scale is modified, it will be reset after X seconds
     private const float ScaleResetCooldown = 4f;
+    // Starting strenght
+    private const float StartingStrenght = 1f;
 
     private float scaleResetTime = 0f;
     private bool onScaleResetCooldown = false;
+    // Strenght, used for grab, throw and punch
+    public float strenght { get; private set; } = StartingStrenght;
 
-    private void Awake()
+    protected override ScaleChange SetScale(float newScale)
     {
+        ScaleChange scaleChange = base.SetScale(newScale);
 
-    }
-
-    public override bool SetScale(float newScale)
-    {
-        bool scaleChanged = base.SetScale(newScale);
-
-        if (scaleChanged) updateStatsOnScale(newScale);
+        if (scaleChange != ScaleChange.Unchanged) updateStatsOnScale(newScale);
 
         // new scale is different than base scale -> start reset cooldown, stop it otherwise
         if (currentScale == startingScale)
@@ -31,12 +30,12 @@ public class ScalablePlayer : ScalableObject
             startScaleResetCooldown();
         }
 
-        return scaleChanged;
+        return scaleChange;
     }
 
     private void updateStatsOnScale(float newScale)
     {
-        //TODO
+        strenght = StartingStrenght * newScale;
     }
 
     private void startScaleResetCooldown()
