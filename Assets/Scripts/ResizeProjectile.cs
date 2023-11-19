@@ -42,6 +42,7 @@ public class ResizeProjectile : MonoBehaviour
         // Hit geometry -> bounce on it
         Vector2 newDir = Vector2.Reflect(transform.right, collision.GetContact(0).normal);
         transform.rotation = Quaternion.FromToRotation(Vector2.right, newDir);
+        shooter = null;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -66,12 +67,6 @@ public class ResizeProjectile : MonoBehaviour
             Destroy(gameObject);
             destroyed = true;
         }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        // Remove temporary collision ignore with the shooter of this projectile
-        if (shooter && collision.gameObject == shooter) shooter = null;
     }
 
     void FixedUpdate()

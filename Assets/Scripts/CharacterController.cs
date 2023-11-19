@@ -22,8 +22,9 @@ public class CharacterController : MonoBehaviour
     private float baseAcceleration = 20f;
     private float jumpingPower = 5f;
     private bool isFacingRight = true;
-    public Vector2 aimDir { get; private set; }
     private bool inAimMode = false;
+    private PlayerInput playerInput;
+    private bool isMouse = false;
 
 
     // smash part
@@ -32,7 +33,7 @@ public class CharacterController : MonoBehaviour
     private bool isSmashed = false;
 
     public float speedToDie;
-    
+
     public float smashCooldown; // en ms
     private bool canSmash = true;
 
@@ -47,6 +48,8 @@ public class CharacterController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         smashDetection = GetComponentInChildren<SmashDetection>();
+        playerInput = GetComponent<PlayerInput>();
+        isMouse = playerInput.currentControlScheme == "Keyboard&Mouse";
         DontDestroyOnLoad(gameObject);
     }
 
@@ -101,17 +104,33 @@ public class CharacterController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
     }
 
+    private void MouseLook()
+    {
+        Vector2 aimDir;
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Camera.main.nearClipPlane));
+        Vector2 directionToMouse = mouseWorldPosition - projShooterPivot.position;
+        aimDir = directionToMouse.normalized;
+        float aimAngle = Vector2.SignedAngle(Vector2.right, aimDir);
+        projShooterPivot.rotation = Quaternion.Euler(0f, 0f, aimAngle);
+    }
+
     public void Look(InputAction.CallbackContext context)
     {
-        // TODO mouse pointer aim
+        if (isMouse)
+        {
+            MouseLook();
+            return;
+        }
+
         // Aim left/right idle rotation
-        if (context.canceled)
+        if (context.canceled && !inAimMode && !isMouse)
         {
             projShooterPivot.rotation = Quaternion.Euler(0f, 0f, isFacingRight ? 0f : 180f);
             return;
         }
 
-        aimDir = context.ReadValue<Vector2>();
+        Vector2 aimDir = context.ReadValue<Vector2>();
         float aimAngle = Vector2.SignedAngle(Vector2.right, aimDir);
         // Not in aim mode -> snap to 45 degrees
         if (!inAimMode)
@@ -151,7 +170,7 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         float acceleration = baseAcceleration * Time.deltaTime;
-       
+
         if (IsGrounded())
             acceleration *= 3f;
 
@@ -185,8 +204,11 @@ public class CharacterController : MonoBehaviour
             }
         }
 
+        if (isMouse)
+            MouseLook();
+
         //Debug.Log(rb.velocity.sqrMagnitude);
-        
+
         if ((!isFacingRight && horizontal > 0) || (isFacingRight && horizontal < 0))
             Flip();
     }
