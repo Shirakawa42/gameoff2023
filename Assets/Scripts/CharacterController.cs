@@ -25,6 +25,7 @@ public class CharacterController : MonoBehaviour
     private bool inAimMode = false;
     private PlayerInput playerInput;
     private bool isMouse = false;
+    public Vector2 aimDir;
 
 
     // smash part
@@ -106,7 +107,6 @@ public class CharacterController : MonoBehaviour
 
     private void MouseLook()
     {
-        Vector2 aimDir;
         Vector2 mousePosition = Mouse.current.position.ReadValue();
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Camera.main.nearClipPlane));
         Vector2 directionToMouse = mouseWorldPosition - projShooterPivot.position;
@@ -130,7 +130,7 @@ public class CharacterController : MonoBehaviour
             return;
         }
 
-        Vector2 aimDir = context.ReadValue<Vector2>();
+        aimDir = context.ReadValue<Vector2>();
         float aimAngle = Vector2.SignedAngle(Vector2.right, aimDir);
         // Not in aim mode -> snap to 45 degrees
         if (!inAimMode)
