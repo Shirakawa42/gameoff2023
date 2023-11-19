@@ -52,7 +52,7 @@ public class CharacterController : MonoBehaviour
     {
         smashInitForce = 1000;
 
-        idPlayer = int.Parse(transform.name.Substring(6)) - 1;
+        idPlayer = 0;//int.Parse(transform.name.Substring(6)) - 1;
         Debug.Log(idPlayer);
 
         rb = GetComponent<Rigidbody2D>();
@@ -90,6 +90,8 @@ public class CharacterController : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        Debug.Log("jump " + IsGrounded());
+        
         if (context.performed && IsGrounded())
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         else if (context.performed && IsFrontOnWall())
@@ -115,8 +117,10 @@ public class CharacterController : MonoBehaviour
     {
         if (context.performed)
         {
+            Debug.Log("Smash");
             if (canSmash && smashDetection.hitSomething)
             {
+                Debug.Log("CanSmash");
                 GameObject target = smashDetection.target;
                 float sizeGap = sizeScale - target.GetComponent<CharacterController>().sizeScale;
                 smashIntensity = smashInitForce * (1.2f * Mathf.Exp(0.7f * sizeGap));

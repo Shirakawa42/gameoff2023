@@ -10,6 +10,10 @@ public class ScalablePlayer : ScalableObject
     private float scaleResetTime = 0f;
     private bool onScaleResetCooldown = false;
 
+    //code dégeu
+    public CharacterController characterController;
+     
+
     private void Awake()
     {
 
@@ -17,6 +21,11 @@ public class ScalablePlayer : ScalableObject
 
     public override bool SetScale(float newScale)
     {
+        if (currentScale < newScale)
+            characterController.sizeScale++;
+        else
+            characterController.sizeScale--;
+
         bool scaleChanged = base.SetScale(newScale);
 
         if (scaleChanged) updateStatsOnScale(newScale);
@@ -37,6 +46,8 @@ public class ScalablePlayer : ScalableObject
     private void updateStatsOnScale(float newScale)
     {
         //TODO
+             
+
     }
 
     private void startScaleResetCooldown()

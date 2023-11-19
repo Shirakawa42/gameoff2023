@@ -374,8 +374,8 @@ GameObject:
   - component: {fileID: 889796715018301354}
   - component: {fileID: 4519836501496024407}
   - component: {fileID: 3270587572051660340}
-  m_Layer: 0
-  m_Name: Player1
+  m_Layer: 7
+  m_Name: PlayerCur
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -534,11 +534,11 @@ MonoBehaviour:
   wallCheckBack: {fileID: 2830647187301811190}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   projShooter: {fileID: 2745067888704604956}
   projShooterPivot: {fileID: 8268911289743676029}
   idPlayer: 1
-  sizeScale: 3
+  sizeScale: 2
   maxGap: 4
   smashInitForce: 0
   smashCooldown: 0.75
@@ -584,7 +584,19 @@ MonoBehaviour:
     m_ActionId: a9180a1e-dc5a-4905-b95f-45becf7dd433
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 889796715018301354}
+        m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
+        m_MethodName: Look
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 2550a788-b2a1-4e39-8500-cb4120502c5b
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
@@ -655,7 +667,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 889796715018301354}
         m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
-        m_MethodName: Move
+        m_MethodName: ShootProjSizeDown
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -665,70 +677,38 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 07f59ba5-0a89-4672-9573-46a36726828c
-    m_ActionName: Player1/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 889796715018301354}
-        m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
-        m_MethodName: Look
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: e5a009ad-8295-49c0-a716-acf9a4aeeb96
-    m_ActionName: Player1/Look[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6a0f6268-253b-44fc-be40-bcef1c0d5f75
-    m_ActionName: Player1/Fire[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 889796715018301354}
-        m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
-        m_MethodName: Jump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 50b6ad45-f931-438e-81b7-9f842bcec390
-    m_ActionName: Player1/Jump[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0d8c1a7b-855e-442a-9078-df9f24e19c14
-    m_ActionName: Player2/Move[/Keyboard/i,/Keyboard/upArrow,/Keyboard/k,/Keyboard/downArrow,/Keyboard/j,/Keyboard/leftArrow,/Keyboard/l,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 06be8418-3c38-4d7b-976a-2b115475dbec
-    m_ActionName: Player2/Look[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f272fc53-b13e-428a-a0f1-dddd01721635
-    m_ActionName: Player2/Fire[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 4db4fc92-a5d8-4f25-aaf9-cc200b7855ff
-    m_ActionName: Player2/Jump[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: b65b010f-e29f-47da-9489-ddc6e1afc9b1
     m_ActionName: Player/FireSizeDownProjectile[/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 889796715018301354}
+        m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
+        m_MethodName: ShootProjSizeUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f6a2e16c-b4aa-4d4a-959b-c78ba7ace46b
     m_ActionName: Player/FireSizeUpProjectile[/Keyboard/r]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 889796715018301354}
+        m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
+        m_MethodName: AimMode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: ad5ea1ee-de42-437a-ac78-841770385fd5
     m_ActionName: Player/AimMode
   - m_PersistentCalls:
@@ -745,67 +725,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 671c0ee7-a772-40f7-8cd8-e66cdb8aa218
-    m_ActionName: Player1/Smash[/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: b44a54ec-69ea-42d2-83e2-94972d198cfe
-    m_ActionName: Player2/Smash[/Keyboard/u]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 889796715018301354}
-        m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
-        m_MethodName: ShootProjSizeUp
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 3e9bfe15-54b6-43eb-85bd-61d1939d514c
-    m_ActionName: Player1/FireSizeUpProjectile[/Keyboard/r,/XInputControllerWindows/rightShoulder]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 889796715018301354}
-        m_TargetAssemblyTypeName: CharacterController, Assembly-CSharp
-        m_MethodName: ShootProjSizeDown
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 34ea9db6-0aa0-4cc1-b26d-41954c8a6685
-    m_ActionName: Player1/FireSizeDownProjectile[/Keyboard/e,/XInputControllerWindows/rightTrigger]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3d9d8e87-fef2-4c16-befb-906a0c88efe1
-    m_ActionName: Player1/Grab[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 4b262a07-ea02-4df1-8c58-ba193be127d2
-    m_ActionName: Player2/AimMode[/XInputControllerWindows/leftShoulder]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3f8ae977-7ef4-4034-899b-3c596b37b594
-    m_ActionName: Player2/FireSizeUpProjectile[/Keyboard/r,/XInputControllerWindows/rightShoulder]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 901c8ceb-f320-4d3a-b3e3-5fd8cfd8464a
-    m_ActionName: Player2/FireSizeDownProjectile[/Keyboard/e,/XInputControllerWindows/rightTrigger]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: aa4afd35-9a32-49ef-958d-f04f9ecdd77c
-    m_ActionName: Player2/Grab[/Mouse/rightButton]
+    m_ActionId: 432b670a-8f95-46fa-bd80-3839e30536e6
+    m_ActionName: Player/Smash[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player1
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &3270587572051660340
@@ -832,6 +756,7 @@ MonoBehaviour:
   onScaleDown:
     m_PersistentCalls:
       m_Calls: []
+  characterController: {fileID: 889796715018301354}
 --- !u!1 &7767389109041822485
 GameObject:
   m_ObjectHideFlags: 0
