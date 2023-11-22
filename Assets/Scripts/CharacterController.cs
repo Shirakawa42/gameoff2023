@@ -134,10 +134,10 @@ public class CharacterController : MonoBehaviour
         aimDir = context.ReadValue<Vector2>();
         float aimAngle = Vector2.SignedAngle(Vector2.right, aimDir);
         // Not in aim mode -> snap to 45 degrees
-        if (!inAimMode)
-        {
-            aimAngle = Snapping.Snap(aimAngle, 45f);
-        }
+        //if (!inAimMode)
+        //{
+        //    aimAngle = Snapping.Snap(aimAngle, 45f);
+        //}
         projShooterPivot.rotation = Quaternion.Euler(0f, 0f, aimAngle);
     }
 
