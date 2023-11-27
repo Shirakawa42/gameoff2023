@@ -4,5 +4,8 @@ using UnityEngine;
 
 public static class Globals
 {
+    public enum GameState { OnMenu, OnArena };
+
+    public static GameState gameState = GameState.OnMenu;
     public static PlayerManager playerManager;
 }

@@ -29,10 +29,13 @@ public class PlayerManager : MonoBehaviour
 
     private void OnPlayerJoined(PlayerInput playerInput)
     {
+        if (Globals.gameState != Globals.GameState.OnMenu) return; // Re-activated player on respawn triggers OnPlayerJoined
+
         Debug.Log("Player " + playerInput.playerIndex + " joined");
         playersImages[playerInput.playerIndex].sprite = sprites[playerInput.playerIndex];
         players[playerInput.playerIndex] = playerInput.gameObject;
         playerInput.DeactivateInput();
+        playerInput.gameObject.GetComponent<ScalablePlayer>().playerIndex = playerInput.playerIndex;
     }
 
     public void OnStartButton()

@@ -4,47 +4,63 @@ using UnityEngine;
 
 public class SmashDetection : MonoBehaviour
 {
-    public bool hitSomething { get; set; } = false;
-    public GameObject target;
+    public float smashCooldown = 1.5f;
 
-    /*
-    private void OnTriggerEnter2D(Collider2D collision)
+    private ScalablePlayer player;
+    private bool canSmash = true;
+    private List<GameObject> targets = new List<GameObject>();
+
+    private void Awake()
     {
-        if (collision != null)
-        {
-            if (ObjIsHittable(collision))
-            {
-                hitSomething = true;
-                target = collision.gameObject;
-                Debug.Log(transform.parent.name + " hit " + target.transform.name);
+        player = transform.parent.GetComponent<ScalablePlayer>();
+    }
 
+    public void Smash()
+    {
+        if (!canSmash || targets.Count <= 0) return;
+        
+        foreach (GameObject targetObj in targets)
+        {
+            Vector2 smashDir = new Vector2(targetObj.transform.position.x - player.transform.position.x, targetObj.transform.position.y - player.transform.position.y);
+
+            if (targetObj.GetComponent<ScalablePlayer>())
+            {
+                targetObj.GetComponent<ScalablePlayer>().Smash(player, smashDir, player.strenght);
+            }
+            else if (targetObj.GetComponent<InteractibleItem>())
+            {
+                //obj.GetComponent<InteractibleItem>().Punch(playerController.) //TODO
             }
         }
+
+        canSmash = false;
+        StartCoroutine(CooldownCoroutine());
     }
-    */
-    
-    private void OnTriggerStay2D(Collider2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision != null)
+        if (objIsHittable(collision))
         {
-            if (ObjIsHittable(collision))
-            {
-                hitSomething = true;
-                target = collision.gameObject;
-                Debug.Log(transform.parent.name + " hit " + target.transform.name);
-            }
+            targets.Add(collision.gameObject);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        hitSomething = false;
-        target = null;
-        Debug.Log("Exit collider");
+        targets.Remove(collision.gameObject);
     }
 
-    private bool ObjIsHittable(Collider2D collision)
+    private bool objIsHittable(Collider2D collision)
     {
-        return collision.tag == "Player";
+        return collision.GetComponent<ScalablePlayer>() || collision.GetComponent<InteractibleItem>();
+    }
+
+    /**
+     * Smash Cooldown
+     **/
+    IEnumerator CooldownCoroutine()
+    {
+        yield return new WaitForSeconds(smashCooldown);
+        canSmash = true;
     }
 }

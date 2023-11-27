@@ -16,7 +16,7 @@ public class ScalableObject : MonoBehaviour
     // The base scale value of this GameObject
     private Vector3 objBaseScale;
     protected float currentScale = 1.0f;
-    private Rigidbody2D rb; // Optional
+    protected Rigidbody2D rb; // Optional
 
     public float maxScale = 2f;
     public float minScale = 0.5f;

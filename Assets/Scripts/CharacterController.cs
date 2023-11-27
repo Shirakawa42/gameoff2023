@@ -17,6 +17,7 @@ public class CharacterController : MonoBehaviour
     public Grabber grabber;
 
     private Rigidbody2D rb;
+    private ScalablePlayer scalablePlayer;
     private float horizontal;
     private float maxSpeed = 6f;
     private float baseAcceleration = 20f;
@@ -30,13 +31,8 @@ public class CharacterController : MonoBehaviour
 
     // smash part
     private SmashDetection smashDetection;
-    public float smashIntensity;
-    private bool isSmashed = false;
-
-    public float speedToDie;
-
-    public float smashCooldown; // en ms
-    private bool canSmash = true;
+    const float smashedMinSpeed = 6f; // Exit "smashed" state when speed goes under this value
+    public float decelerationOnSmash = 10f; //Speed lost per second when ejected by smash
 
     /* 
      * while (isSmashed)
@@ -44,6 +40,11 @@ public class CharacterController : MonoBehaviour
      *          if (objHitted is wall && rb.velocity > speedToDie)
      *              die();
      */
+
+    private void Awake()
+    {
+        scalablePlayer = GetComponent<ScalablePlayer>();
+    }
 
     void Start()
     {
@@ -103,6 +104,13 @@ public class CharacterController : MonoBehaviour
 
         if (context.canceled && rb.velocity.y > 0)
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+    }
+
+    public void Smash(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        smashDetection.Smash();
     }
 
     private void MouseLook()
@@ -168,14 +176,14 @@ public class CharacterController : MonoBehaviour
         projShooter.ShootSizeDown();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         float acceleration = baseAcceleration * Time.deltaTime;
 
         if (IsGrounded())
             acceleration *= 3f;
 
-        if (!isSmashed) // if the player isn't smashed then do regular movement
+        if (!scalablePlayer.isSmashed) // if the player isn't smashed then do regular movement
         {
             if ((rb.velocity.x < maxSpeed && horizontal > 0) || (rb.velocity.x > -maxSpeed && horizontal < 0))
             {
@@ -194,14 +202,14 @@ public class CharacterController : MonoBehaviour
                     rb.velocity = new Vector2(0, rb.velocity.y);
             }
         }
-        else
+        else // "Smashed" state
         {
             CheckSmashOnWall();
-            rb.velocity = new Vector2(rb.velocity.x * 0.9f, rb.velocity.y); // decrease velocity slower than regular movement
-            if (rb.velocity.x < 0.1f && rb.velocity.x > -0.1f)
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, rb.velocity.magnitude - decelerationOnSmash * Time.deltaTime);
+            if (rb.velocity.magnitude < smashedMinSpeed)
             {
-                rb.velocity = new Vector2(0, rb.velocity.y);
-                isSmashed = false;
+                rb.velocity = new Vector2(0, 0);
+                scalablePlayer.QuitSmashState();
             }
         }
 
@@ -214,25 +222,23 @@ public class CharacterController : MonoBehaviour
             Flip();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (scalablePlayer.isSmashed)
+        {
+            //?
+        }
+    }
+
     /**
      * 
      **/
     private void CheckSmashOnWall()
     {
-        if ((IsGrounded() || IsFrontOnWall() || IsBackOnWall()) && rb.velocity.sqrMagnitude > speedToDie)
+        if ((IsFrontOnWall() || IsBackOnWall()) && rb.velocity.sqrMagnitude > scalablePlayer.speedToDie)
         {
             Debug.Log("You die!");
+            scalablePlayer.Die();
         }
-    }
-
-
-    /**
-     * Smash Cooldown
-     **/
-    IEnumerator CooldownCoroutine()
-    {
-        yield return new WaitForSeconds(smashCooldown);
-
-        canSmash = true;
     }
 }
