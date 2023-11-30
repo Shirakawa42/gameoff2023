@@ -78,7 +78,7 @@ public class CharacterController : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        if (inAimMode) return;
+        if (inAimMode || Globals.gameState == Globals.GameState.OnMenu) return;
 
         horizontal = context.ReadValue<Vector2>().x;
     }

@@ -12,6 +12,7 @@ public class ArenaScript : MonoBehaviour
     void Start()
     {
         PlayerManager pManager = Globals.playerManager;
+        OvelayManager overlayManager = Globals.ovelayManager;
         Globals.gameState = Globals.GameState.OnArena;
         pManager.OnArenaEnter();
         for (int i = 0; i < pManager.players.Length; i++)
@@ -21,7 +22,11 @@ public class ArenaScript : MonoBehaviour
 
             ScalablePlayer player = pManager.players[i].GetComponent<ScalablePlayer>();
             player.OnPlayerDied.AddListener(OnPlayerDied);
+
+            overlayManager.DisplayHUDPlayer(i);
         }
+
+        overlayManager.OnArenaEnter();
 
         GameObject spawn_points = transform.Find("spawn_points").gameObject;
         for (int i = 0; i < spawn_points.transform.childCount; i++)
