@@ -30,8 +30,7 @@ public class ArenaScript : MonoBehaviour
 
     private void OnPlayerDied(ScalablePlayer killed, ScalablePlayer killer)
     {
-        Debug.Log("Player " + killer + " killed " + killed);
-        // TODO add point to killer
+        Globals.hud.AddPoint(killer.playerIndex);
         StartCoroutine(RespawnPlayer(killed.playerIndex));
     }
 
@@ -41,6 +40,7 @@ public class ArenaScript : MonoBehaviour
         GameObject player = Globals.playerManager.players[playerIndex];
         player.transform.position = spawnPoints[Random.Range(0, spawnPoints.Count)].position;
         player.GetComponent<ScalablePlayer>().Reset();
+        Globals.hud.ResetHp(playerIndex);
         player.SetActive(true);
     }
 }
