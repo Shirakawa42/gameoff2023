@@ -82,9 +82,19 @@ public class HUD : MonoBehaviour
         }
     }
 
-    public void SetSize(int playerIndex, int size)
+    public void SetSize(GameObject playerObj, float newScale)
     {
-        sliders[playerIndex].value = size;
+        ScalablePlayer player = playerObj.GetComponent<ScalablePlayer>();
+
+        int newsize;
+        if (newScale < 0.9)
+            newsize = 1;
+        else if (newScale < 1.1)
+            newsize = 2;
+        else
+            newsize = 3;
+
+        sliders[player.playerIndex].value = newsize;
     }
 
     public void ResetHp(int playerIndex)
