@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Windows</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{70EAFC57-A14B-84B6-F963-4748E7F1C03F}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="1078167454" Name="Master SFX"/>
+				<Bus Id="2318586166" Name="Master Music"/>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+			<GameParameters>
+				<GameParameter Id="137696981" Name="Sensitivity_Scale"/>
+				<GameParameter Id="822163944" Name="SS_Air_RPM"/>
+				<GameParameter Id="1029930033" Name="SS_Air_Fury"/>
+				<GameParameter Id="1351367891" Name="SS_Air_Fear"/>
+				<GameParameter Id="2648548617" Name="SS_Air_Month"/>
+				<GameParameter Id="3002758120" Name="SS_Air_Freefall"/>
+				<GameParameter Id="3074696722" Name="SS_Air_Size"/>
+				<GameParameter Id="3203397129" Name="SS_Air_TimeOfDay"/>
+				<GameParameter Id="3715662592" Name="SS_Air_Storm"/>
+				<GameParameter Id="3847924954" Name="SS_Air_Presence"/>
+				<GameParameter Id="4160247818" Name="SS_Air_Turbulence"/>
+			</GameParameters>
+			<SwitchGroups>
+				<SwitchGroup Id="2724869341" Name="Music_Switch">
+					<Switches>
+						<Switch Id="89505537" Name="Gameplay"/>
+						<Switch Id="2607556080" Name="Menu"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="3865314626" Name="Material">
+					<Switches>
+						<Switch Id="1754255532" Name="Clean"/>
+						<Switch Id="2917121896" Name="Electricity"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+			<AcousticTextures>
+				<AcousticTexture Id="504532776" Name="Brick">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="12"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="18"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="23"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="513139656" Name="Mountain">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="0"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="841620460" Name="Concrete">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="14"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1755085759" Name="Wood_Deep">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="1"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="8"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="20"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1873957695" Name="Anechoic">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1970351858" Name="Fabric">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="3"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="13"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="48"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="72"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2058049674" Name="Wood">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="32"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="25"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="20"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2412606308" Name="Carpet">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="46"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="45"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="76"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2637588553" Name="Tile">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="67"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="41"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="12"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="0"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2928161104" Name="Curtains">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="7"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="60"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="84"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="3195498748" Name="Cork_Tiles">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="14"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="30"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="73"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="3670307564" Name="Drywall">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="2"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="4168643977" Name="Acoustic_Banner">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="37"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="4262522749" Name="Wood_Bright">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="32"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="25"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="10"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="9"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+			</AcousticTextures>
+		</SoundBank>
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{671DA8D9-2745-DD6E-299A-D703E807F332}">
+			<ShortName>Main</ShortName>
+			<Path>Main.bnk</Path>
+			<Media>
+				<File Id="8878318" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Menu_3.wav</ShortName>
+					<CachePath>SFX/Menu_3_73700913.wem</CachePath>
+				</File>
+				<File Id="18450037" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Sneaker_02.wav</ShortName>
+					<CachePath>SFX/Sneaker_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="85376681" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Back.wav</ShortName>
+					<CachePath>SFX/Back_818F3B66.wem</CachePath>
+				</File>
+				<File Id="113083707" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Shot-003.wav</ShortName>
+					<CachePath>SFX/Shot-003_818F3B66.wem</CachePath>
+				</File>
+				<File Id="219505911" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Shot-001.wav</ShortName>
+					<CachePath>SFX/Shot-001_818F3B66.wem</CachePath>
+				</File>
+				<File Id="254668037" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Gameplay_Transition_Loop_2.wav</ShortName>
+					<CachePath>SFX/Gameplay_Transition_Loop_2_73700913.wem</CachePath>
+				</File>
+				<File Id="359667708" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Shot-002.wav</ShortName>
+					<CachePath>SFX/Shot-002_818F3B66.wem</CachePath>
+				</File>
+				<File Id="409611160" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Sneaker_04.wav</ShortName>
+					<CachePath>SFX/Sneaker_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="418694990" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Sneaker_10.wav</ShortName>
+					<CachePath>SFX/Sneaker_10_818F3B66.wem</CachePath>
+				</File>
+				<File Id="576706499" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Sneaker_07.wav</ShortName>
+					<CachePath>SFX/Sneaker_07_818F3B66.wem</CachePath>
+				</File>
+				<File Id="755424988" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Punch-001.wav</ShortName>
+					<CachePath>SFX/Punch-001_818F3B66.wem</CachePath>
+				</File>
+				<File Id="816725515" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Size down.wav</ShortName>
+					<CachePath>SFX/Size down_818F3B66.wem</CachePath>
+				</File>
+				<File Id="861979063" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Select.wav</ShortName>
+					<CachePath>SFX/Select_818F3B66.wem</CachePath>
+				</File>
+				<File Id="881673861" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Hover.wav</ShortName>
+					<CachePath>SFX/Hover_818F3B66.wem</CachePath>
+				</File>
+				<File Id="909616066" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Gameplay_2.wav</ShortName>
+					<CachePath>SFX/Gameplay_2_73700913.wem</CachePath>
+				</File>
+				<File Id="910091349" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Sneaker_01.wav</ShortName>
+					<CachePath>SFX/Sneaker_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1029696789" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Size up.wav</ShortName>
+					<CachePath>SFX/Size up_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1070024709" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Sneaker_08.wav</ShortName>
+					<CachePath>SFX/Sneaker_08_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="2028801292" Name="HighShelf_minus6" LibName="Wwise Parametric EQ" LibId="6881283"/>
+				</ShareSets>
+			</Plugins>
+			<Events>
+				<Event Id="1559875400" Name="Back" DurationType="OneShot" DurationMin="2.8518126" DurationMax="2.8518126">
+					<MediaRefs>
+						<MediaRef Id="85376681"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3753593413" Name="Hover" DurationType="OneShot" DurationMin="1.7987292" DurationMax="1.7987292">
+					<MediaRefs>
+						<MediaRef Id="881673861"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3465618802" Name="Play_Bounce" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3854155799" Name="Play_Footsteps" DurationType="OneShot" DurationMin="2.2593834" DurationMax="3.0841603">
+					<MediaRefs>
+						<MediaRef Id="18450037"/>
+						<MediaRef Id="409611160"/>
+						<MediaRef Id="418694990"/>
+						<MediaRef Id="576706499"/>
+						<MediaRef Id="910091349"/>
+						<MediaRef Id="1070024709"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="2028801292"/>
+						</ShareSets>
+					</PluginRefs>
+				</Event>
+				<Event Id="17721092" Name="Play_Grab" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1822424553" Name="Play_High_Power_Smash" DurationType="OneShot" DurationMin="1.5" DurationMax="1.5">
+					<MediaRefs>
+						<MediaRef Id="755424988"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="746183055" Name="Play_Low_Power_Smash" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1190854492" Name="Play_Medium_Power_Smash" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2228153899" Name="Play_Menu_Music" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="8878318"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2932040671" Name="Play_Music" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="254668037"/>
+						<MediaRef Id="909616066"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1976827765" Name="Play_ScaleShotA" DurationType="OneShot" DurationMin="2.645601" DurationMax="3.7701437">
+					<MediaRefs>
+						<MediaRef Id="113083707"/>
+						<MediaRef Id="219505911"/>
+						<MediaRef Id="359667708"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1976827766" Name="Play_ScaleShotB" DurationType="OneShot" DurationMin="2.645601" DurationMax="3.7701437">
+					<MediaRefs>
+						<MediaRef Id="113083707"/>
+						<MediaRef Id="219505911"/>
+						<MediaRef Id="359667708"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4097851697" Name="Play_SizeDown" DurationType="OneShot" DurationMin="1.8179792" DurationMax="1.8179792">
+					<MediaRefs>
+						<MediaRef Id="816725515"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="598650966" Name="Play_SizeUp" DurationType="OneShot" DurationMin="1.6601459" DurationMax="1.6601459">
+					<MediaRefs>
+						<MediaRef Id="1029696789"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1977644338" Name="Play_Throw" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1432588725" Name="Select" DurationType="OneShot" DurationMin="3.7111876" DurationMax="3.7111876">
+					<MediaRefs>
+						<MediaRef Id="861979063"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1462254117" Name="Set_Switch_Gameplay" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetSwitch>
+						<ActionSetSwitchEntry GroupId="2724869341" Id="89505537" Name="Gameplay"/>
+					</ActionSetSwitch>
+				</Event>
+				<Event Id="1197906100" Name="Set_Switch_Menu" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetSwitch>
+						<ActionSetSwitchEntry GroupId="2724869341" Id="2607556080" Name="Menu"/>
+					</ActionSetSwitch>
+				</Event>
+			</Events>
+			<SwitchGroups>
+				<SwitchGroup Id="2724869341" Name="Music_Switch">
+					<Switches>
+						<Switch Id="89505537" Name="Gameplay"/>
+						<Switch Id="2607556080" Name="Menu"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="3865314626" Name="Material">
+					<Switches>
+						<Switch Id="1754255532" Name="Clean"/>
+						<Switch Id="2917121896" Name="Electricity"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{586E163F-6AA7-4084-08AD-FE5E7E194F9D}</FileHash>
+</SoundBanksInfo>

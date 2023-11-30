@@ -1,0 +1,53 @@
+Event	ID	Name			Wwise Object Path	Notes
+	17721092	Play_Grab			\Default Work Unit\Character\Play_Grab	
+	598650966	Play_SizeUp			\Default Work Unit\Character\Play_SizeUp	
+	746183055	Play_Low_Power_Smash			\Default Work Unit\Smash\Play_Low_Power_Smash	
+	1190854492	Play_Medium_Power_Smash			\Default Work Unit\Smash\Play_Medium_Power_Smash	
+	1197906100	Set_Switch_Menu			\Default Work Unit\Set_Switch_Menu	
+	1432588725	Select			\Default Work Unit\UI\Select	
+	1462254117	Set_Switch_Gameplay			\Default Work Unit\Set_Switch_Gameplay	
+	1559875400	Back			\Default Work Unit\UI\Back	
+	1822424553	Play_High_Power_Smash			\Default Work Unit\Smash\Play_High_Power_Smash	
+	1976827765	Play_ScaleShotA			\Default Work Unit\ScaleShot\Play_ScaleShotA	
+	1976827766	Play_ScaleShotB			\Default Work Unit\ScaleShot\Play_ScaleShotB	
+	1977644338	Play_Throw			\Default Work Unit\Character\Play_Throw	
+	2228153899	Play_Menu_Music			\Default Work Unit\Play_Menu_Music	
+	2932040671	Play_Music			\Default Work Unit\Play_Music	
+	3465618802	Play_Bounce			\Default Work Unit\ScaleShot\Play_Bounce	
+	3753593413	Hover			\Default Work Unit\UI\Hover	
+	3854155799	Play_Footsteps			\Default Work Unit\Character\Play_Footsteps	
+	4097851697	Play_SizeDown			\Default Work Unit\Character\Play_SizeDown	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	2724869341	Music_Switch			\Default Work Unit\Music_Switch	
+	3865314626	Material			\Default Work Unit\Material	
+
+Switch	ID	Name	Switch Group			Notes
+	89505537	Gameplay	Music_Switch			
+	2607556080	Menu	Music_Switch			
+	1754255532	Clean	Material			
+	2917121896	Electricity	Material			
+
+Effect plug-ins	ID	Name	Type				Notes
+	2028801292	HighShelf_minus6	Wwise Parametric EQ			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	8878318	Menu_3	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Windows\SFX\Menu_3_73700913.wem		\Interactive Music Hierarchy\Default Work Unit\MusicSwitch\Menu\Menu\Menu_3		3181720
+	18450037	Sneaker_02	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Windows\SFX\Sneaker_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Footsteps\Sneaker_02		473160
+	85376681	Back	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Windows\SFX\Back_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\Back		547644
+	113083707	ScaleShotA_03	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Windows\SFX\Shot-003_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\ScaleShot\ScaleShotA\ScaleShotA_03		538256
+	219505911	ScaleShotA_01	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Windows\SFX\Shot-001_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\ScaleShot\ScaleShotA\ScaleShotA_01		615544
+	254668037	Gameplay_Transition_Loop_2	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Windows\SFX\Gameplay_Transition_Loop_2_73700913.wem		\Interactive Music Hierarchy\Default Work Unit\MusicSwitch\Gameplay\Gameplay_Transition_Loop\Gameplay_Transition_Loop_2		1384876
+	359667708	ScaleShotA_02	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Windows\SFX\Shot-002_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\ScaleShot\ScaleShotA\ScaleShotA_02		683336
+	409611160	Sneaker_04	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Windows\SFX\Sneaker_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Footsteps\Sneaker_04		543108
+	418694990	Sneaker_10	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Windows\SFX\Sneaker_10_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Footsteps\Sneaker_10		532384
+	576706499	Sneaker_07	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Windows\SFX\Sneaker_07_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Footsteps\Sneaker_07		473756
+	755424988	High_Power_Maroufle_01	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Windows\SFX\Punch-001_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Maroufle\High_Power_Maroufle\High_Power_Maroufle_01		288096
+	816725515	SizeDown	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Windows\SFX\Size down_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\SizeDown		349148
+	861979063	Select	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Windows\SFX\Select_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\Select		712644
+	881673861	Hover	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Windows\SFX\Hover_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\Hover		345452
+	909616066	Gameplay_2	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Windows\SFX\Gameplay_2_73700913.wem		\Interactive Music Hierarchy\Default Work Unit\MusicSwitch\Gameplay\Gameplay\Gameplay_2		5811705
+	910091349	Sneaker_01	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Windows\SFX\Sneaker_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Footsteps\Sneaker_01		537668
+	1029696789	SizeUp	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Windows\SFX\Size up_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\SizeUp		318844
+	1070024709	Sneaker_08	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Windows\SFX\Sneaker_08_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Footsteps\Sneaker_08		480640
+
