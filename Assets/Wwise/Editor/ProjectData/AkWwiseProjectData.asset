@@ -443,6 +443,26 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Hover
+      guid: a99ab67cd6cbaa4795a15c7f3ef31cec
+      id: 3753593413
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 12386bab0de6e74aaeca32439521c3bc
+      - ElementName: UI
+        ObjectType: 4
+        guid: d6e42c714796e64caafc8ce62b3d1c15
+      - ElementName: Hover
+        ObjectType: 3
+        guid: a99ab67cd6cbaa4795a15c7f3ef31cec
+      Path: Events/Default Work Unit/UI/Hover
+      maxAttenuation: 0
+      maxDuration: 1.7987292
+      minDuration: 1.7987292
     - name: Play_Bounce
       guid: 3e317d18e3738a4891981446519f5041
       id: 3465618802
@@ -724,10 +744,13 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 12386bab0de6e74aaeca32439521c3bc
+      - ElementName: UI
+        ObjectType: 4
+        guid: d6e42c714796e64caafc8ce62b3d1c15
       - ElementName: Select
         ObjectType: 3
         guid: aadb0d4523525d4d8477e6272c876600
-      Path: Events/Default Work Unit/Select
+      Path: Events/Default Work Unit/UI/Select
       maxAttenuation: 0
       maxDuration: 3.7111876
       minDuration: 3.7111876
@@ -779,6 +802,23 @@ MonoBehaviour:
         ObjectType: 4
         guid: 005adb211151624eb02ddf9a3354a6e1
       Path: Events/Default Work Unit/Smash
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: UI
+      guid: d6e42c714796e64caafc8ce62b3d1c15
+      id: 1551306167
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 12386bab0de6e74aaeca32439521c3bc
+      - ElementName: UI
+        ObjectType: 4
+        guid: d6e42c714796e64caafc8ce62b3d1c15
+      Path: Events/Default Work Unit/UI
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
