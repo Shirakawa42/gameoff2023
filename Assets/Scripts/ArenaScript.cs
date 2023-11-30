@@ -15,6 +15,7 @@ public class ArenaScript : MonoBehaviour
     void Start()
     {
         pManager = Globals.playerManager;
+        OvelayManager overlayManager = Globals.ovelayManager;
         Globals.gameState = Globals.GameState.OnArena;
         pManager.OnArenaEnter();
         //TODO reset players_score
@@ -27,7 +28,11 @@ public class ArenaScript : MonoBehaviour
             player.OnPlayerDied.AddListener(OnPlayerDied);
             player.OnScaleChanged.AddListener(Globals.hud.SetSize);
             player.Reset();
+
+            overlayManager.DisplayHUDPlayer(i);
         }
+
+        overlayManager.OnArenaEnter();
 
         GameObject spawn_points = transform.Find("spawn_points").gameObject;
         Debug.Log("spawn points: " + spawn_points);
@@ -60,8 +65,7 @@ public class ArenaScript : MonoBehaviour
             player.SetActive(false);
         }
         // Show win screen
-        // TODO
-        BackToMenu(); //placeholder
+        Globals.ovelayManager.OnGameEnded(winnerIndex+1);
     }
 
     public void BackToMenu()

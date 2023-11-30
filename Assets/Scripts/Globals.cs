@@ -9,4 +9,6 @@ public static class Globals
     public static GameState gameState = GameState.OnMenu;
     public static PlayerManager playerManager;
     public static HUD hud;
+
+    public static OvelayManager ovelayManager;
 }

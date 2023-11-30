@@ -2151,7 +2151,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 407448477}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6763219860561453942}
+        m_TargetAssemblyTypeName: ArenaScript, Assembly-CSharp
+        m_MethodName: BackToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &407448477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2670,6 +2682,7 @@ GameObject:
   - component: {fileID: 499088065}
   - component: {fileID: 499088064}
   - component: {fileID: 499088063}
+  - component: {fileID: 499088067}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2767,6 +2780,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &499088067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499088062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e9df2bc3e79e8f46b186669f9a08919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hudPlayers:
+  - {fileID: 965573908}
+  - {fileID: 509455522}
+  - {fileID: 1544386006}
+  - {fileID: 1469423658}
+  readyRound: {fileID: 1522838051}
+  startRound: {fileID: 1133049580}
+  endRound: {fileID: 1147529170}
+  winScreen: {fileID: 987383351}
+  winnerPlayerText: {fileID: 1553764979}
 --- !u!1 &509455522
 GameObject:
   m_ObjectHideFlags: 0
