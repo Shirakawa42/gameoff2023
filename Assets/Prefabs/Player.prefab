@@ -438,8 +438,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a19c5822c71a049ade6735ca88d307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxScale: 4
-  minScale: 0.25
+  maxScale: 2
+  minScale: 0.5
   startingScale: 1
   OnScaleChanged:
     m_PersistentCalls:

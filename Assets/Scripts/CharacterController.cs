@@ -237,11 +237,7 @@ public class CharacterController : MonoBehaviour
     {
         if ((IsFrontOnWall() || IsBackOnWall()) && rb.velocity.sqrMagnitude > scalablePlayer.speedToDie)
         {
-            int playerIndex = scalablePlayer.playerIndex;
-            int remaining_hp = Globals.hud.TakeDamage(playerIndex);
-            rb.velocity = new Vector2(0, 0);
-            if (remaining_hp <= 0)
-                scalablePlayer.Die();
+            scalablePlayer.Die();
         }
     }
 }

@@ -63,10 +63,10 @@ public class HUD : MonoBehaviour
             if (pManager.players[i] == null)
                 continue;
 
-            huds[i].SetActive(true);
-            sliders[i].value = sliders[i].maxValue;
+            sliders[i].value = 1;
             for (int j = 0; j < points[i].Count; j++)
                 points[i][j].sprite = points_empty;
+            huds[i].SetActive(true);
         }
     }
 
@@ -82,10 +82,9 @@ public class HUD : MonoBehaviour
         }
     }
 
-    public int TakeDamage(int playerIndex)
+    public void SetSize(int playerIndex, int size)
     {
-        sliders[playerIndex].value -= 1;
-        return (int)sliders[playerIndex].value;
+        sliders[playerIndex].value = size;
     }
 
     public void ResetHp(int playerIndex)
