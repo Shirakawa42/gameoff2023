@@ -31,7 +31,6 @@ public class OvelayManager : MonoBehaviour
 
     public void OnArenaEnter()
     {
-        Globals.gameState = Globals.GameState.OnMenu;
         StartCoroutine(BeginRoundCoroutine());
     }
 
@@ -79,7 +78,7 @@ public class OvelayManager : MonoBehaviour
         startRound.SetActive(false);
 
         // Allows players to move
-        Globals.gameState = Globals.GameState.OnArena;
+        Globals.playerManager.EnablePlayerInput(true);
     }
 
     IEnumerator DisplayEndGameCoroutine(int winnerId)

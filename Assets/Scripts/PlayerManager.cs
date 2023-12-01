@@ -81,8 +81,19 @@ public class PlayerManager : MonoBehaviour
                 continue;
 
             players[i].transform.position = spawns[i].position;
-            players[i].GetComponent<PlayerInput>().ActivateInput();
             players[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+    }
+
+    public void EnablePlayerInput(bool enable)
+    {
+        foreach (GameObject player in players)
+        {
+            if (!player) continue;
+            if (enable)
+                player.GetComponent<PlayerInput>().ActivateInput();
+            else
+                player.GetComponent<PlayerInput>().DeactivateInput();
         }
     }
 
