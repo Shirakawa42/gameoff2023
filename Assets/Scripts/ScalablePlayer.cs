@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
+using AK.Wwise;
 
 // player 1: killed player
 // player 2: killer player (optional)
@@ -24,11 +25,15 @@ public class ScalablePlayer : ScalableObject
     public OnPlayerDiedEvent OnPlayerDied = new OnPlayerDiedEvent();
     public int playerIndex = -1;
 
+    // Audio
+    public AK.Wwise.Event smashSound;
+
     public void Smash(ScalablePlayer smasher, Vector2 smashDir, float power)
     {
         rb.AddForce(smashDir * power, ForceMode2D.Impulse);
         isSmashed = true;
         smashedBy = smasher;
+        smashSound.Post(gameObject);
     }
 
     public void QuitSmashState()

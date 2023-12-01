@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21986fcc2c11147d6864fdcb471d376e, type: 3}
+  m_Name: ACCE24D0-A946-47A6-AA2F-7D24B8FBEF83
+  m_EditorClassIdentifier: 
+  objectName: Play_Low_Power_Smash
+  id: 746183055
+  guid: ACCE24D0-A946-47A6-AA2F-7D24B8FBEF83
