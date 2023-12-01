@@ -73,4 +73,13 @@ public class PlayerManager : MonoBehaviour
             players[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
+
+    public void RemoveAllPlayers()
+    {
+        foreach (GameObject player in players)
+        {
+            if (!player) continue;
+            Destroy(player);
+        }
+    }
 }

@@ -71,15 +71,6 @@ public class ScalablePlayer : ScalableObject
             startScaleResetCooldown();
         }
 
-        int newsize;
-        if (currentScale < 0.9)
-            newsize = 1;
-        else if (currentScale < 1.1)
-            newsize = 2;
-        else
-            newsize = 3;
-        Globals.hud.SetSize(playerIndex, newsize);
-
         return scaleChange;
     }
 
