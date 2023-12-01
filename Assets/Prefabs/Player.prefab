@@ -452,6 +452,7 @@ MonoBehaviour:
       m_Calls: []
   isSmashed: 0
   speedToDie: 10
+  playerIndex: -1
 --- !u!1 &1447079795923964032
 GameObject:
   m_ObjectHideFlags: 0
