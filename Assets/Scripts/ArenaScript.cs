@@ -70,6 +70,7 @@ public class ArenaScript : MonoBehaviour
 
     public void BackToMenu()
     {
+        Destroy(GameObject.Find("WwiseGlobal"));
         pManager.RemoveAllPlayers();
         Destroy(pManager.gameObject);
         Globals.gameState = Globals.GameState.OnMenu;
