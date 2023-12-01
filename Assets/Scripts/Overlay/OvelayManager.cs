@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class OvelayManager : MonoBehaviour
@@ -11,6 +12,10 @@ public class OvelayManager : MonoBehaviour
     [SerializeField] private GameObject endRound;
     [SerializeField] private GameObject winScreen;
     [SerializeField] private TextMeshProUGUI winnerPlayerText;
+
+    [SerializeField] private Image winnerFullImg;
+    [SerializeField] private Image winnerSmallImg;
+    [SerializeField] private List<Sprite> playerSprites;
 
 
     // OnArenaEnter()
@@ -59,6 +64,8 @@ public class OvelayManager : MonoBehaviour
     private void DisplayWinScreen(int winnerId)
     {
         winnerPlayerText.text = "Player " + winnerId + " win !";
+        winnerSmallImg.sprite = playerSprites[winnerId - 1];
+        winnerFullImg.sprite = playerSprites[winnerId - 1];
         winScreen.SetActive(true);
     } 
 
