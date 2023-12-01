@@ -29,6 +29,8 @@ public class CharacterController : MonoBehaviour
     private bool isMouse = false;
 
     public List<Sprite> playerskins;
+    public List<Sprite> armskins;
+    public SpriteRenderer armSprite;
 
 
     // smash part
@@ -56,6 +58,7 @@ public class CharacterController : MonoBehaviour
         isMouse = playerInput.currentControlScheme == "Keyboard&Mouse";
         DontDestroyOnLoad(gameObject);
         GetComponent<SpriteRenderer>().sprite = playerskins[playerInput.playerIndex];
+        armSprite.sprite = armskins[playerInput.playerIndex];
     }
 
     private bool IsGrounded()
