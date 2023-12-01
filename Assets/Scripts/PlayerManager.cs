@@ -40,6 +40,18 @@ public class PlayerManager : MonoBehaviour
 
     public void OnStartButton()
     {
+        bool hasPlayer = false;
+        foreach (GameObject player in players)
+        {
+            if (player)
+            {
+                hasPlayer = true;
+                break;
+            }
+        }
+
+        if (!hasPlayer) return;
+
         playerInputManager.DisableJoining();
 
         SceneManager.LoadScene("Arena");
