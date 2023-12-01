@@ -28,6 +28,8 @@ public class CharacterController : MonoBehaviour
     private PlayerInput playerInput;
     private bool isMouse = false;
 
+    public List<Sprite> playerskins;
+
 
     // smash part
     private SmashDetection smashDetection;
@@ -53,6 +55,7 @@ public class CharacterController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         isMouse = playerInput.currentControlScheme == "Keyboard&Mouse";
         DontDestroyOnLoad(gameObject);
+        GetComponent<SpriteRenderer>().sprite = playerskins[playerInput.playerIndex];
     }
 
     private bool IsGrounded()

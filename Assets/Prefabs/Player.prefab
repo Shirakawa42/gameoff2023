@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.327, y: -2.2988791, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.3}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1761931849568280362}
@@ -85,9 +85,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fc326aa1ffb973248930733815519683, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f2169b3c6dcc24149b7ca953af9c3f3a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 2}
@@ -179,6 +179,11 @@ MonoBehaviour:
   projShooter: {fileID: 3230319737057822839}
   projShooterPivot: {fileID: 5054382352368649019}
   grabber: {fileID: 2048223864468581800}
+  playerskins:
+  - {fileID: 21300000, guid: f2169b3c6dcc24149b7ca953af9c3f3a, type: 3}
+  - {fileID: 21300000, guid: 39ba599c786fde84ca4e1d2ae876cba7, type: 3}
+  - {fileID: 21300000, guid: 15367cb1797f68a4dba40177b7187d0f, type: 3}
+  - {fileID: 21300000, guid: 3036ceef21c7d9344aa6c283f03fdbdd, type: 3}
   decelerationOnSmash: 10
 --- !u!114 &7054844226159167560
 MonoBehaviour:
