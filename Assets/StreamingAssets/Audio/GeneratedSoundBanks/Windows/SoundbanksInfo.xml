@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{70EAFC57-A14B-84B6-F963-4748E7F1C03F}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{3D9E1710-1392-0D20-27F7-E0E3A034156E}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -179,7 +179,7 @@
 				</AcousticTexture>
 			</AcousticTextures>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{671DA8D9-2745-DD6E-299A-D703E807F332}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{8C808C5A-EBDD-E7A8-1B9E-DC1E18247B45}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -247,6 +247,10 @@
 					<ShortName>Sneaker_01.wav</ShortName>
 					<CachePath>SFX/Sneaker_01_818F3B66.wem</CachePath>
 				</File>
+				<File Id="983812899" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Shot-001.wav</ShortName>
+					<CachePath>SFX/Shot-001_DAAD5ED3.wem</CachePath>
+				</File>
 				<File Id="1029696789" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Size up.wav</ShortName>
 					<CachePath>SFX/Size up_818F3B66.wem</CachePath>
@@ -257,6 +261,9 @@
 				</File>
 			</Media>
 			<Plugins>
+				<Custom>
+					<Plugin Id="986981169" Name="Delay (Custom)" LibName="Wwise Delay" LibId="6946819"/>
+				</Custom>
 				<ShareSets>
 					<Plugin Id="2028801292" Name="HighShelf_minus6" LibName="Wwise Parametric EQ" LibId="6881283"/>
 				</ShareSets>
@@ -272,7 +279,16 @@
 						<MediaRef Id="881673861"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3465618802" Name="Play_Bounce" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3465618802" Name="Play_Bounce" DurationType="OneShot" DurationMin="0.13689987" DurationMax="0.13689987">
+					<MediaRefs>
+						<MediaRef Id="983812899"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="986981169"/>
+						</Custom>
+					</PluginRefs>
+				</Event>
 				<Event Id="3854155799" Name="Play_Footsteps" DurationType="OneShot" DurationMin="2.2593834" DurationMax="3.0841603">
 					<MediaRefs>
 						<MediaRef Id="18450037"/>
@@ -307,18 +323,15 @@
 						<MediaRef Id="909616066"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1976827765" Name="Play_ScaleShotA" DurationType="OneShot" DurationMin="2.645601" DurationMax="3.7701437">
+				<Event Id="1976827765" Name="Play_ScaleShotA" DurationType="OneShot" DurationMin="2.3569627" DurationMax="3.358816">
 					<MediaRefs>
 						<MediaRef Id="113083707"/>
-						<MediaRef Id="219505911"/>
 						<MediaRef Id="359667708"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1976827766" Name="Play_ScaleShotB" DurationType="OneShot" DurationMin="2.645601" DurationMax="3.7701437">
+				<Event Id="1976827766" Name="Play_ScaleShotB" DurationType="OneShot" DurationMin="4.2787733" DurationMax="4.802761">
 					<MediaRefs>
-						<MediaRef Id="113083707"/>
 						<MediaRef Id="219505911"/>
-						<MediaRef Id="359667708"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="4097851697" Name="Play_SizeDown" DurationType="OneShot" DurationMin="1.8179792" DurationMax="1.8179792">
@@ -347,6 +360,7 @@
 						<ActionSetSwitchEntry GroupId="2724869341" Id="2607556080" Name="Menu"/>
 					</ActionSetSwitch>
 				</Event>
+				<Event Id="3945748993" Name="Stop_Menu_Music" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
 			<SwitchGroups>
 				<SwitchGroup Id="2724869341" Name="Music_Switch">
@@ -364,5 +378,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{586E163F-6AA7-4084-08AD-FE5E7E194F9D}</FileHash>
+	<FileHash>{460CE3FF-964C-968E-4BB5-C4FCA6BBA6E2}</FileHash>
 </SoundBanksInfo>

@@ -359,7 +359,7 @@ MonoBehaviour:
     ParentPath: SoundBanks/Default Work Unit
     guid: 3ff91478ee57114aa92da8dd3b5959bb
     GuidInternal: 
-    m_lastTime: -8585002307979097462
+    m_lastTime: -8585002262930860159
     List:
     - name: Main
       guid: e9e20ab29d946147bfeed9195ff6d6ce
@@ -387,7 +387,7 @@ MonoBehaviour:
     ParentPath: Events/Default Work Unit
     guid: 12386bab0de6e74aaeca32439521c3bc
     GuidInternal: 
-    m_lastTime: -8585002307979147981
+    m_lastTime: -8585002241065501086
     List:
     - name: Back
       guid: f3f37bf695b57441826253b34ff8f143
@@ -481,8 +481,8 @@ MonoBehaviour:
         guid: 3e317d18e3738a4891981446519f5041
       Path: Events/Default Work Unit/ScaleShot/Play_Bounce
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 0.13689987
+      minDuration: 0.13689987
     - name: Play_Footsteps
       guid: c52172e22c66d94ba0b002c8e6c49ca4
       id: 3854155799
@@ -635,8 +635,8 @@ MonoBehaviour:
         guid: ec34901738610f4f85fdcd7e1f92aef4
       Path: Events/Default Work Unit/ScaleShot/Play_ScaleShotA
       maxAttenuation: 0
-      maxDuration: 3.7701437
-      minDuration: 2.645601
+      maxDuration: 3.358816
+      minDuration: 2.3569627
     - name: Play_ScaleShotB
       guid: 7a2edb3ea5776d4a9d8bb507dad43370
       id: 1976827766
@@ -655,8 +655,8 @@ MonoBehaviour:
         guid: 7a2edb3ea5776d4a9d8bb507dad43370
       Path: Events/Default Work Unit/ScaleShot/Play_ScaleShotB
       maxAttenuation: 0
-      maxDuration: 3.7701437
-      minDuration: 2.645601
+      maxDuration: 4.802761
+      minDuration: 4.2787733
     - name: Play_SizeDown
       guid: 8083173a292dba4aa218594ef8c3c963
       id: 4097851697
@@ -805,6 +805,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Stop_Menu_Music
+      guid: 3cc4dc4519b347479a154514a717e9f4
+      id: 3945748993
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 12386bab0de6e74aaeca32439521c3bc
+      - ElementName: Stop_Menu_Music
+        ObjectType: 3
+        guid: 3cc4dc4519b347479a154514a717e9f4
+      Path: Events/Default Work Unit/Stop_Menu_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: UI
       guid: d6e42c714796e64caafc8ce62b3d1c15
       id: 1551306167
@@ -1146,7 +1163,7 @@ MonoBehaviour:
     m_lastTime: -8585013025078592399
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 07000000080000000900000011000000120000001300000014000000
+  ExpandedWaapiItemIds: 0700000008000000100000001100000013000000140000001500000016000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

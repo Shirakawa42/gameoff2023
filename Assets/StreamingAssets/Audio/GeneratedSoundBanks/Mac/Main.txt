@@ -16,6 +16,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	3465618802	Play_Bounce			\Default Work Unit\ScaleShot\Play_Bounce	
 	3753593413	Hover			\Default Work Unit\UI\Hover	
 	3854155799	Play_Footsteps			\Default Work Unit\Character\Play_Footsteps	
+	3945748993	Stop_Menu_Music			\Default Work Unit\Stop_Menu_Music	
 	4097851697	Play_SizeDown			\Default Work Unit\Character\Play_SizeDown	
 
 Switch Group	ID	Name			Wwise Object Path	Notes
@@ -29,6 +30,7 @@ Switch	ID	Name	Switch Group			Notes
 	2917121896	Electricity	Material			
 
 Effect plug-ins	ID	Name	Type				Notes
+	986981169	Delay (Custom)	Wwise Delay			
 	2028801292	HighShelf_minus6	Wwise Parametric EQ			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
@@ -36,7 +38,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	18450037	Sneaker_02	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Mac\SFX\Sneaker_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Footsteps\Sneaker_02		473160
 	85376681	Back	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Mac\SFX\Back_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\Back		547644
 	113083707	ScaleShotA_03	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Mac\SFX\Shot-003_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\ScaleShot\ScaleShotA\ScaleShotA_03		538256
-	219505911	ScaleShotA_01	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Mac\SFX\Shot-001_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\ScaleShot\ScaleShotA\ScaleShotA_01		615544
+	219505911	ScaleShotB_01	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Mac\SFX\Shot-001_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\ScaleShot\ScaleShotB\ScaleShotB_01		615544
 	254668037	Gameplay_Transition_Loop_2	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Mac\SFX\Gameplay_Transition_Loop_2_73700913.wem		\Interactive Music Hierarchy\Default Work Unit\MusicSwitch\Gameplay\Gameplay_Transition_Loop\Gameplay_Transition_Loop_2		1384876
 	359667708	ScaleShotA_02	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Mac\SFX\Shot-002_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\ScaleShot\ScaleShotA\ScaleShotA_02		683336
 	409611160	Sneaker_04	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Mac\SFX\Sneaker_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Footsteps\Sneaker_04		543108
@@ -48,6 +50,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	881673861	Hover	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Mac\SFX\Hover_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI\Hover		345452
 	909616066	Gameplay_2	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Mac\SFX\Gameplay_2_73700913.wem		\Interactive Music Hierarchy\Default Work Unit\MusicSwitch\Gameplay\Gameplay\Gameplay_2		5811705
 	910091349	Sneaker_01	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Mac\SFX\Sneaker_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Footsteps\Sneaker_01		537668
+	983812899	ScaleShotA_01	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Mac\SFX\Shot-001_DAAD5ED3.wem		\Actor-Mixer Hierarchy\Default Work Unit\ScaleShot\Bounce\ScaleShotA_01		22200
 	1029696789	SizeUp	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Mac\SFX\Size up_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\SizeUp		318844
 	1070024709	Sneaker_08	Y:\Documents\WwiseProjects\ShapeShiftArena\.cache\Mac\SFX\Sneaker_08_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\Footsteps\Sneaker_08		480640
 

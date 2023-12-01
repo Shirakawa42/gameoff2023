@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 6915644559399616519}
   - component: {fileID: 330701800055601125}
   - component: {fileID: 2063365452111491199}
+  - component: {fileID: -4509267109362893416}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -446,13 +447,73 @@ MonoBehaviour:
       m_Calls: []
   OnScaleUp:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -4509267109362893416}
+        m_TargetAssemblyTypeName: PlayerEvents, Assembly-CSharp
+        m_MethodName: PlaySizeUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnScaleDown:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -4509267109362893416}
+        m_TargetAssemblyTypeName: PlayerEvents, Assembly-CSharp
+        m_MethodName: PlaySizeDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isSmashed: 0
   speedToDie: 10
   playerIndex: -1
+  smashSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 3140fa9208a9c43de8ed007ecaeac059, type: 2}
+--- !u!114 &-4509267109362893416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714367810389178160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9304be62dfbb54bb499ad6039fa8a372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  event1:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 6a7ff646c9e0b4f9cb2e935a7e28b9d4, type: 2}
+  event2:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 09dec91f3d79849adabf283efce37cd5, type: 2}
+  event3:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 3140fa9208a9c43de8ed007ecaeac059, type: 2}
+  event4:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  event5:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!1 &1447079795923964032
 GameObject:
   m_ObjectHideFlags: 0
